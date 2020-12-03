@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -pedantic-errors -Werror -g   CMakeFiles/Course.h.dir/Course.cpp.o CMakeFiles/Course.h.dir/MyClass.cpp.o CMakeFiles/Course.h.dir/Views.cpp.o CMakeFiles/Course.h.dir/CoursesManager.cpp.o  -o Course.h 
