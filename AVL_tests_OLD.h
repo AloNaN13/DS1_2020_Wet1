@@ -1,6 +1,3 @@
-//
-// Created by User on 4/29/2020.
-//
 
 #ifndef WET1_DATASTRUCTS_AVL_TESTS_H
 

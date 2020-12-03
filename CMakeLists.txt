@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.15)
+project(DS1_2020_Wet1)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(.)
+
+add_executable(DS1_2020_Wet1
+        AVL_tests_OLD.h
+        AvlTree_OLD.h
+        library.h
+        main1.cpp
+        List.cpp
+        List.h)

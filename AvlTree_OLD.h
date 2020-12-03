@@ -1,6 +1,6 @@
 
-#ifndef MIVNE_AVLTREE_H
-#define MIVNE_AVLTREE_H
+#ifndef DS1_2020_WET1_AVL_H
+#define DS1_2020_WET1_AVL_H
 
 //#define MAX(a, b) ((a > b) ? a : b)
 
@@ -836,4 +836,4 @@ void AvlTree<Element,Key>::BalanceRemove(Node *node) {
     }
 }
 
-#endif //MIVNE_AVLTREE_H
+#endif //DS1_2020_WET1_AVL_H
