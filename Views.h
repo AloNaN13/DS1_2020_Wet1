@@ -12,16 +12,16 @@ using std::ostream;
 
 class Views {
     int _sum;
-    AvlTree <MyClass,int>* _tree;
+    AvlTree <AvlTree<int,int>,int>* _tree;
 public :
     Views() = default;
     Views(const Views &views) = default;
-    Views(int sum,AvlTree<MyClass,int> *t );
+    Views(int sum,<AvlTree<int,int>,int>,int> *t );
     ~Views(){_tree.remove(_sum);};
     int getSum();
-    AvlTree<MyClass,int>* getTreeOfViews();
+    AvlTree<int,int>* getTreeOfViews();
     void setSum(int i);
-    void setTreeOfViews(AvlTree<MyClass,int> *t);
+    void setTreeOfViews(<AvlTree<int,int>,int> *t);
 
 };
 #endif //DATA_SCTRUCTS_1_Views_H

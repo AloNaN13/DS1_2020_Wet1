@@ -5,7 +5,7 @@
 #include "Views.h"
 using std::cout;
 
-Views::Views(int sum,AvlTree<MyClass, int> *t):_sum(sum),_tree(t) {
+Views::Views(int sum,<AvlTree<int,int>,int> *t):_sum(sum),_tree(t) {
 
     if (sum < 0) {
         cout << INVALID_INPUT;
@@ -17,12 +17,12 @@ Views::Views(int sum,AvlTree<MyClass, int> *t):_sum(sum),_tree(t) {
 int Views::getSum() {
     return _sum;
 }
-AvlTree<MyClass,int>* Views::getTreeOfViews() {
+<AvlTree<int,int>,int>* Views::getTreeOfViews() {
     return this->_tree;
 }
 void Views::setSum(int i) {
     _sum=i;
 }
-void Views::setTreeOfViews(AvlTree<MyClass,int> *t) {
+void Views::setTreeOfViews(<AvlTree<int,int>,int>> *t) {
     _tree = t;
 }

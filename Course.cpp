@@ -7,7 +7,7 @@
 
 using std::ostream;
 using std::cout;
-Course::Course(const int id, MyClass p[]): _id(id), _p(p) {
+Course::Course(const int id, MyClass p[],int tot_views): _id(id), _p(p),_tot_views(tot_views) {
 
     if(_id<0){
         cout<<INVALID_INPUT;
@@ -32,6 +32,23 @@ void Course::setId(int i){
 }
 void Course::setClasses(MyClass *p){
     _p = p;
+}
+int Course::getTotViews() {
+    return _tot_views;
+}
+void Course::setTotViews(int i) {
+    _tot_views = i;
+}
+void Course::deleteClass(int index) {
+    MyClass tmp = new Course(*_p[index]);
+    if(this->getNumOfClasses()==1)
+    {
+        delete _p;
+        return;
+    }
+    _p[index] = _p[this->getNumOfClasses()-1];
+ //   _p[index].setIndex(index);
+    delete _p[this->getNumOfClasses()-1];
 }
 //
 // Created by svet on 12/2/2020.

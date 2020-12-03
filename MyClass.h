@@ -2,13 +2,15 @@
 #include <iostream>
 #include"list.h"
 #include "CoursesManager.h"
+#include "Views.h"
 
 class MyClass
 {
+private:
     int _index; //index of class
     int _id_of_course; //id of related course
     int _views; //number of total views
-    *list _views_of_class; //link to the sum
+    Views _views_of_class; //link to the sum node in the list (not specific node to head of sum connected to num of views
 
 public :
     MyClass(int index, int id_of_course);

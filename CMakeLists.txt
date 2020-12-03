@@ -12,8 +12,8 @@ add_executable(DS1_2020_Wet1
         library.h
         main1.cpp
         List.cpp
-        List.h)
-=======
+        List.h
+)
 cmake_minimum_required(VERSION 3.10)
 project(DS1_2020_Wet1)
 

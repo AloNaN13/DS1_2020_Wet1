@@ -25,7 +25,7 @@ int MyClass::getIndex() {
     return _index;
 }
 
-list MyClass::getListOfViews() {
+Views MyClass::getListOfViews() {
     return _views_of_class;
 }
 
