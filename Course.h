@@ -13,8 +13,8 @@ using std::ostream;
 
 
 
-class Course
-{
+class Course{
+private:
     int _id;
     MyClass _p[];
     int _tot_views;
@@ -33,4 +33,5 @@ public :
     void deleteClass(int index);
 
 };
+
 #endif //DATA_SCTRUCTS_1_COURSE_H

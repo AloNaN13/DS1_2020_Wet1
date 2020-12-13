@@ -14,69 +14,44 @@ void List::deleteListsNodes(ListNode* node){
     }
 }
 
-
-
-
-
-
-
-
-
-
-// OLD VERSION
-
-
-void StreamList::deleteAllStreamNodes(StreamListNode* node) {
-    if(node){
-        deleteAllStreamNodes((node->getNextNode()));
-        delete(node);
-    }
-}
-
-StreamList::~StreamList(){
-    if(first_node){
-        deleteAllStreamNodes(first_node);
-    }
-}
-
-
-// inserts after the curr_node
-StreamListResult StreamList::insertNode(StreamListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& stream_artists, int num_of_streams) {
-
-    // num_of_streams exists for sure - checked in thhe caller function
-
-    StreamListNode* new_node = new StreamListNode(stream_artists,num_of_streams); // why new?
-
+// insert a node after the curr_node given as a parameter
+// need to check if the node exists?
+// check if indeed inside avlTree in <int,int>
+ListResult List::insertListNode(ListNode *curr_node,
+                                AvlTree<AvlTree<int, int> *, int> &views_courses,
+                                int num_of_views) {
+    ListNode* new_node = new ListNode(num_of_views,views_courses);
     if(curr_node->getNextNode() != nullptr){
-        new_node->SetNextNode(curr_node->getNextNode());
-        curr_node->getNextNode()->SetPrevNode(new_node);
+        new_node->getNextNode()->setPrevNode(new_node);
+        new_node->setNextNode(curr_node->getNextNode());
     }
-    new_node->SetPrevNode(curr_node);
-    curr_node->SetNextNode(new_node);
-
+    new_node->setPrevNode(curr_node);
+    curr_node->setNextNode(new_node);
     if(curr_node == last_node){
-        last_node = curr_node->getNextNode();
+        last_node = new_node;
     }
-
-    return SL_SUCCESS;
-
+    return LIST_SUCCESS;
 }
 
-StreamListResult StreamList::removeNode(StreamListNode* node) {
-
-    // num_of_streams exists for sure - checked in thhe caller function
-
-    if(node->getNextNode() == nullptr){
-        last_node = node->getPrevNode();
-    }
-    else{
-        node->getNextNode()->SetPrevNode(node->getPrevNode());
-    }
+// need to check if the node exists?
+// check if indeed inside avlTree in <int,int>
+ListResult List::removeListNode(ListNode *node) {
+    // we never try to erase the first_node if it's not quit? - deal with it?
     if(node != first_node){
-        node->getPrevNode()->SetNextNode(node->getNextNode());
+        node->getPrevNode()->setNextNode(node->getNextNode());
+    }
+    else{ // it is the first node
+        //ERROR? should happen only in quit
+    }
+    // check if works ok - find last node indeed
+    if(node->getNextNode() != last_node){
+        node->getNextNode()->setPrevNode(node->getPrevNode());
+    }
+    else{ // it is the last node
+        last_node = node->getPrevNode();
     }
 
     delete(node);
-    return SL_SUCCESS;
-
+    return LIST_SUCCESS;
 }
+

@@ -32,16 +32,27 @@ static void linkToListOfViews(MyClass &clas,int sum){
 
 }
 
+
+
+
+
+StatusType CoursesManager::setTotalNumOfCourses{
+    this->
+    return SUCCESS;
+};
+
 //adds a course
 // adds to general tree, views tree and to sum 0 in general list sums
+// SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
 //
 //
 StatusType CoursesManager::AddCourse (void *DS, int courseID, int numOfClasses){
     if((DS==nullptr)||(numOfClasses<0)){
         return INVALID_INPUT;
     }
-    if(general_course_tree.getElementptr(courseID)==nullptr)
+    if(general_course_tree.getElementptr(courseID)==nullptr){
         return FAILURE;
+    }
 
     auto *class_arr = new MyClass[numOfClasses];
     for(int i=0;i<numOfClasses;i++){
@@ -56,38 +67,74 @@ StatusType CoursesManager::AddCourse (void *DS, int courseID, int numOfClasses){
 
 // removes from tree of views, if only view then deletes the sum in general views list
 // removes from general tree
-StatusType CoursesManager::RemoveCourse(void *DS, int courseID){
-    if((DS==nullptr)||(courseID<0)){
-    return INVALID_INPUT;
+// SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
+StatusType CoursesManager::RemoveCourse(void *DS, int courseID) {
+    if ((DS == nullptr) || (courseID < 0)) {
+        return INVALID_INPUT;
     }
-    if(general_course_tree.getElementptr(courseID)==nullptr){
+    if (general_course_tree.getElementptr(courseID) == nullptr) {
         return FAILURE;
     }
 
-    Course *c = general_courses_tree.getElementptr(courseID); //getting the course element
-   // int len = c->getNumOfClasses();//len of arr of classes
+    Course *c = general_courses_tree.getElementptr(
+            courseID); //getting the course element
+    // int len = c->getNumOfClasses();//len of arr of classes
     MyClass *clas_arr = c->getClasses(); //getting the classes arr
     int tmp_remove = 0;
-    int i=0;
-    while(c->getNumOfClasses()>0) {
+    int i = 0;
+    while (c->getNumOfClasses() > 0) {
         tmp_remove = clas_arr[i].getViews(); //getting the sum of views
         Views class_views = clas_arr[i].getListOfViews(); //getting the node of the sum from the list
-        AvlTree<int,int> course_in_views_tree = class_views.getTreeOfViews()->getElementptr(courseID);//the course tree that contains classes of this sum of views
+        AvlTree<int, int> course_in_views_tree = class_views.getTreeOfViews()->getElementptr(
+                courseID);//the course tree that contains classes of this sum of views
         //check if it is more then 1 class, then remove all the classes
-        if(course_in_views_tree->getNumNodes()>1){
+        if (course_in_views_tree->getNumNodes() > 1) {
             int index_class = course_in_views_tree.getFirst();
-            for (int j = 0; j < class_views.getTreeOfViews()->getNumNodes()-1; ++j) {
+            for (int j = 0;
+                 j < class_views.getTreeOfViews()->getNumNodes() - 1; ++j) {
                 c->deleteClass(index_class);
                 index_class = course_in_views_tree.getNext();
+            }
+            class_views.getTreeOfViews()->remove(
+                    courseID); //removing the course from the tree of sums
+            if (class_views.getTreeOfViews()->getNumNodes() == 0) {
+                general_list_of_views.remove(class_views);
+            }
+            delete c->deleteClass(clas_arr[i].getIndex());
+            i++;
         }
-        class_views.getTreeOfViews()->remove(courseID); //removing the course from the tree of sums
-        if (class_views.getTreeOfViews()->getNumNodes() == 0) {
-            general_list_of_views.remove(class_views);
-        }
-        delete c->deleteClass(clas_arr[i].getIndex());
-        i++;
+        general_courses_tree.remove(courseID);
+        return SUCCESS;
     }
-    general_courses_tree.remove(courseID);
-    return SUCCESS;
-
 }
+
+StatusType WatchClass(void *DS, int courseID, int classID, int time){
+    //TO DO
+    // like addSongToCount
+}
+
+StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed){
+    // like NumberOfStreams
+    try{
+        if(DS == nullptr || courseID <= 0 || classID < 0 ||
+                classID > general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+            return INVALID_INPUT;
+        }
+        if(general_courses_tree.getElementptr(courseID) == nullptr){
+            return FAILURE;
+        }
+        timeViewed = general_courses_tree.getElementptr(courseID)->getClasses() + classID;
+            //check if it is ok to fetch the classes array like this
+        return SUCCESS;
+    } catch(...){
+        return ALLOCATION_ERROR;
+    }
+}
+
+StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *classes){
+    //TO DO
+    // like getRecommendedSongs
+}
+
+
+

@@ -45,7 +45,7 @@ public:
     ListNode* getPrevNode() {return this->prev_node};
     ListNode* getNextNode() {return this->next_node};
     void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node};
-    void setNExtNode(ListNode* new_next_node) {this->next_node = new_prev_node};
+    void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
 
     // other functions?
     // get num_of_views?
@@ -60,11 +60,34 @@ private:
     ListNode* last_node;
 public:
     //ctor
-    //dtor
+    List(): first_node(new ListNode(0)),
+            last_node(nullptr) {
+        last_node = first_node;
+    }
 
-    ~List() {delete(&views_courses)};
-    //cctor
-    //assign
+    //dtor - implemented in cpp
+    ~List();
+
+    //cctor + assign
+    List(const List& list) = default;
+    List& operator=(const List& list) = default;
+
+    // getters
+    ListNode* getListsFirstNode() {return this->first_node;};
+    ListNode* getListsLastNode() {return this->last_node;};
+
+    // any need for setters?
+
+    // other functions
+    insertnode
+    removenode
+
+
+    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& views_courses, int num_of_views);
+    ListResult removeListNode(ListNode* node);
+
+
+    // get avltree?
 
 };
 
@@ -73,24 +96,10 @@ public:
 
 
 public:
-    StreamList(): first_node(new StreamListNode(0)), last_node(nullptr) {
-        last_node = first_node;
-    };
-    ~StreamList();
+
+
     void deleteAllStreamNodes(StreamListNode* node);
-    StreamList& operator=(const StreamList& list) = default;
 
-    StreamListNode* GetListFirstNode() {return this->first_node;};
-    StreamListNode* GetListLastNode() {return this->last_node;};
 
-    //void SetListFirstNode(StreamListNode* node) {this->first_node = node;}; // void?
-    //void SetListLastNode(StreamListNode* node) {this->last_node = node;}; // void?
-    //AvlTree<AvlTree<int,int>*,int>& getAvlTreeFromNode(StreamListNode& node) {return node.getNodeAvlTree();};
-
-    //StreamListNode* getNodePrev(StreamListNode* node) { return node->getPrevNode();};
-    //StreamListNode* getNodeNext(StreamListNode* node) { return node->getNextNode();};
-
-    StreamListResult insertNode(StreamListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& stream_artists, int num_of_streams);
-    StreamListResult removeNode(StreamListNode* node);
 
 };
