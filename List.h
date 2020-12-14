@@ -47,10 +47,9 @@ public:
     void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node};
     void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
 
-    // other functions?
-    // get num_of_views?
-    // get avltree?
-
+    // other functions
+    int getNumOfViews() {return this->num_of_views;};
+    AvlTree<Avltree<int,int>*,int>& getViewsCoursesTree() {return this->views_courses;};
 
 };
 
