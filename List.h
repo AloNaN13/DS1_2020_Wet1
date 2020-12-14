@@ -2,7 +2,7 @@
 #ifndef DS1_2020_WET1_LIST_H
 #define DS1_2020_WET1_LIST_H
 
-#include "AVLTree_OLD.h"
+#include "AVLTree.h"
 
 typedef enum ListResult_t{
     LIST_SUCCESS,
@@ -18,18 +18,18 @@ typedef enum ListResult_t{
 
 class ListNode{
 private:
-    const int num_of_views;
+    const int time_of_views;
     AvlTree<AvlTree<int,int>*,int>& views_courses; // why reference?
     ListNode* prev_node;
     ListNode* next_node;
 public:
     //ctor
     // change pointer and reference? create with next and prev?
-    explicit ListNode(int num_of_views): num_of_views(num_of_views),
+    explicit ListNode(int time_of_views): time_of_views(time_of_views),
                                 views_courses(*(new AvlTree<AvlTree<int,int>*,int>())),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
-    ListNode(int num_of_views, AvlTree<AvlTree<int,int>*,int>& views_courses): num_of_views(num_of_views),
+    ListNode(int time_of_views, AvlTree<AvlTree<int,int>*,int>& views_courses): time_of_views(time_of_views),
                                 views_courses(views_courses),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
@@ -48,8 +48,8 @@ public:
     void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
 
     // other functions
-    int getNumOfViews() {return this->num_of_views;};
     AvlTree<Avltree<int,int>*,int>& getViewsCoursesTree() {return this->views_courses;};
+    int getTimeOfViews() {return this->time_of_views;};
 
 };
 
@@ -82,7 +82,7 @@ public:
     removenode
 
 
-    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& views_courses, int num_of_views);
+    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& views_courses, int time_of_views);
     ListResult removeListNode(ListNode* node);
 
 

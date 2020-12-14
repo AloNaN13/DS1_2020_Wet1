@@ -25,7 +25,7 @@ int MyClass::getIndex() {
     return _index;
 }
 
-Views MyClass::getListOfViews() {
+ListNode* MyClass::getListOfViews() {
     return _views_of_class;
 }
 
@@ -41,7 +41,7 @@ void MyClass::setIdOfCourse(const int id) {
     _id_of_course = id;
 }
 
-void MyClass::setListOfViews (list* new_sum_of_views) {
+void MyClass::setListOfViews (ListNode* new_sum_of_views) {
     _views_of_class = new_sum_of_views;
 }
 

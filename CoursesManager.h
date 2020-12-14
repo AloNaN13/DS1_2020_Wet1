@@ -12,7 +12,13 @@
 
 // enums instead of exceptions
 // change to CM_StatusType? typedef?
-enum StatusType {ALLOCATION_ERROR,SUCCESS,FAILURE,INVALID_INPUT};
+typedef enum CMResult_t{
+    CM_SUCCESS,
+    CM_ALLOCATION_ERROR,
+    CM_FAILURE,
+    CM_INVALID_INPUT
+}CMResult;
+
 
 class CoursesManager {
     //should be private!
@@ -20,7 +26,6 @@ private:
     AvlTree<Course,int> general_course_tree;
     List general_views_list;
     int total_num_of_courses;
-
 public:
     //ctor+dtor+ccot+assignop
     CoursesManager(): total_num_of_courses(0) {}; // need to implement it more explicitly?

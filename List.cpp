@@ -19,8 +19,8 @@ void List::deleteListsNodes(ListNode* node){
 // check if indeed inside avlTree in <int,int>
 ListResult List::insertListNode(ListNode *curr_node,
                                 AvlTree<AvlTree<int, int> *, int> &views_courses,
-                                int num_of_views) {
-    ListNode* new_node = new ListNode(num_of_views,views_courses);
+                                int time_of_views) {
+    ListNode* new_node = new ListNode(time_of_views,views_courses);
     if(curr_node->getNextNode() != nullptr){
         new_node->getNextNode()->setPrevNode(new_node);
         new_node->setNextNode(curr_node->getNextNode());
