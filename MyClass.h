@@ -10,7 +10,7 @@ private:
     int _index; //index of class
     int _id_of_course; //id of related course
     int _views; //number of total views
-    Views _views_of_class; //link to the sum node in the list (not specific node to head of sum connected to num of views
+    ListNode* _views_of_class; //link to the sum node in the list (not specific node to head of sum connected to num of views
 
 public :
     MyClass(int index, int id_of_course);
@@ -19,7 +19,7 @@ public :
     ~MyClass();
     //get func
     int getIndex();
-    list* getListOfViews();
+    ListNode* getListOfViews();
     int getViews();
     int getIdOfCourse();
     //set func

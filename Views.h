@@ -4,13 +4,15 @@
 
 #ifndef DATA_STRUCTS_1_VIEWS_H
 #define DATA_STRUCTS_1_VIEWS_H
+
 #include "AvlTree.h"
 #include "MyClass.h"
 #include "CoursesManager.h"
 
 using std::ostream;
 
-class Views {
+class Views{
+private:
     int _sum;
     AvlTree <AvlTree<int,int>,int>* _tree;
 public :
@@ -24,9 +26,5 @@ public :
     void setTreeOfViews(<AvlTree<int,int>,int> *t);
 
 };
-#endif //DATA_SCTRUCTS_1_Views_H
-
-};
-
 
 #endif //DATA_STRUCTS_1_VIEWS_H
