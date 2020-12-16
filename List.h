@@ -35,17 +35,17 @@ public:
                                 next_node(nullptr) {};
 
     //dtor
-    ~ListNode() {delete(&views_courses)};
+    ~ListNode() {delete(&views_courses);};
 
     //cctor + assign
     //ListNode(const ListNode& node) = default;
     //ListNode& operator=(const ListNode& node) = default;
 
     // setters+getters
-    ListNode* getPrevNode() {return this->prev_node};
-    ListNode* getNextNode() {return this->next_node};
-    void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node};
-    void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
+    ListNode* getPrevNode() {return this->prev_node;};
+    ListNode* getNextNode() {return this->next_node;};
+    void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node;};
+    void setNextNode(ListNode* new_next_node) {this->next_node = new_next_node;};
 
     // other functions
     AvlTree<AvlTree<int,int>,int>& getViewsCoursesTree() {return this->views_courses;};
@@ -74,31 +74,13 @@ public:
     // getters
     ListNode* getListsFirstNode() {return this->first_node;};
     ListNode* getListsLastNode() {return this->last_node;};
-
     // any need for setters?
 
     // other functions
-    insertnode
-    removenode
-
-
     ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>,int>& views_courses, int time_of_views);
     ListResult removeListNode(ListNode* node);
-
-
-    // get avltree?
 
 };
 
 
 #endif //DS1_2020_WET1_LIST_H
-
-
-public:
-
-
-    void deleteAllStreamNodes(StreamListNode* node);
-
-
-
-};

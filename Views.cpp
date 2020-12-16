@@ -2,6 +2,14 @@
 // Created by svet on 12/3/2020.
 //
 
+
+// TO ERASE - NO NEED FOR CLASS
+
+
+
+
+
+/*
 #include "Views.h"
 using std::cout;
 
@@ -26,3 +34,5 @@ void Views::setSum(int i) {
 void Views::setTreeOfViews(<AvlTree<int,int>,int>> *t) {
     _tree = t;
 }
+
+ */

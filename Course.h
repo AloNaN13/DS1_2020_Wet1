@@ -1,17 +1,13 @@
-//
-// Created by svet on 12/2/2020.
-//
 
 #ifndef DATA_SCTRUCTS_1_COURSE_H
 #define DATA_SCTRUCTS_1_COURSE_H
+
 #include <iostream>
 #include "MyClass.h"
 #include "CoursesManager.h"
 
 using std::string;
 using std::ostream;
-
-
 
 class Course{
 private:
@@ -31,7 +27,6 @@ public :
     void setTotViews(int i);
     int getNumOfClasses();
     void deleteClass(int index);
-
 };
 
 #endif //DATA_SCTRUCTS_1_COURSE_H
