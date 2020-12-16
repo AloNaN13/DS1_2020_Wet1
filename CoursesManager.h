@@ -25,7 +25,7 @@ class CoursesManager {
 private:
     AvlTree<Course,int> general_course_tree;
     List general_views_list;
-    int total_num_of_courses;
+    int num_of_courses;
 public:
     //ctor+dtor+ccot+assignop
     CoursesManager(): total_num_of_courses(0) {}; // need to implement it more explicitly?
@@ -34,8 +34,8 @@ public:
     CoursesManager& operator=(const CoursesManager& courses_manager) = default;
 
     //getters
-    AvlTree<Course,int>& getGeneralCourseTree() {return this->general_course_tree;};
-    List& getGeneralViewsList() {return this->general_views_list;};
+    //AvlTree<Course,int>& getGeneralCourseTree() {return this->general_course_tree;};
+    //List& getGeneralViewsList() {return this->general_views_list;};
     //any need for getter or setter for total_nunm_of_courses?
 
     //functions needed to be implemented in task

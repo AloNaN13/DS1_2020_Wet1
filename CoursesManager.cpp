@@ -38,13 +38,6 @@ static void linkToListOfViews(MyClass &clas,int sum){
 
 
 
-
-
-StatusType CoursesManager::setTotalNumOfCourses{
-    this->
-    return CM_SUCCESS;
-};
-
 //adds a course
 // adds to general tree, views tree and to sum 0 in general list sums
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
@@ -114,8 +107,6 @@ StatusType CoursesManager::RemoveCourse(void *DS, int courseID) {
 
 // need to put "new" in front of avltree ctor?
 StatusType WatchClass(void *DS, int courseID, int classID, int time){
-    //TO DO
-    // like addSongToCount
     try{
         if(DS == nullptr || courseID <= 0 || classID < 0 || time <= 0 ||
             classID + 1 > general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
@@ -194,14 +185,13 @@ StatusType WatchClass(void *DS, int courseID, int classID, int time){
 }
 
 StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed){
-    // like NumberOfStreams
     try{
         if(DS == nullptr || courseID <= 0 || classID < 0 ||
                 classID > general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
         if(general_courses_tree.getElementptr(courseID) == nullptr){
-            return FAILURE;
+            return CM_FAILURE;
         }
         timeViewed = general_courses_tree.getElementptr(courseID)->getClasses() + classID;
             //check if it is ok to fetch the classes array like this
@@ -212,8 +202,44 @@ StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed){
 }
 
 StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *classes){
-    //TO DO
-    // like getRecommendedSongs
+    try{
+        if(DS == nullptr || numOfClasses <= 0){
+            return CM_INVALID_INPUT;
+        }
+        if(num_of_courses < numOfClasses){
+            return CM_FAILURE;
+        }
+
+        // get the last node of list
+        // run with a loop until reaches numOfClasses
+            // get first course
+                // get first song
+                // up the counter by 1 and get the next song
+                // if last song, go to next course
+            // if last course, go to prev node in list
+
+        int counter = 0;
+        ListNode* curr_views_node = general_list_of_views.getListsFirstNode();
+        AvlTree<int,int>* curr_course = curr_views_node->getViewsCoursesTree().getFirst();
+        int* curr_song = curr_course->getFirst();
+
+        while(counter < numOfClasses){
+            while(counter < numOfClasses && (curr_course != nullptr)){
+                while(counter < numOfClasses && curr_song != nullptr){
+                    courses[counter] = curr_course->getKey();
+                    classes[counter] = *curr_song;
+                    counter++;
+                    curr_song = curr_course->getNext();
+                }
+                // am i doing it correctly?
+                curr_course = curr_views_node->getViewsCoursesTree().getNext();
+            }
+            curr_views_node = curr_views_node->getPrevNode();
+        }
+        return CM_SUCCESS;
+    } catch(...){
+        return CM_ALLOCATION_ERROR;
+    }
 }
 
 
