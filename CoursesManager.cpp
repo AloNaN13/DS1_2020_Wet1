@@ -7,34 +7,8 @@
 #include "List.h"
 
 // ERASE - Just because there is no init
-List general_list_of_views = List();
-AvlTree<Course,int> general_courses_tree = AvlTree<Course,int>();
-
-
-
-//helper func to link to the general list of views, not specifically for addCourse
-static void linkToListOfViews(MyClass &clas,int sum){
-      if(sum==0){
-          // check why getViesCoursesTree returns an int?
-          //general_list_of_views.getListsFirstNode()->getViewsCoursesTree()
-          //sveta's
-          general_list_of_views.getListsFirstNode()->getElementptr(clas.getIdOfCourse())->insert(clas.getIndex(),clas.getIndex());
-      }
-
-  else{
-
-      Views current_sum = general_list_of_views.getSumByIndex(clas.getViews());//general list of views->get the view obj of sum
-      int current_sum_value = current_sum.getSum(); //the sum into int var
-      while ((sum<current_sum_value)||(current_sum->next!=nullptr)){ //search for the next sum
-          current_sum = current_sum->next;
-          current_sum_value = current_sum->getData();
-          }
-      AvlTree<int,int> sum_value_tree; //create a tree of sum
-      sum_value_tree.insert(clas.getIndex(),clas.setIdOfCourse());//insert the clas index , ordered by the course id
-      general_list_of_views.emplace(sum_value_tree,current_sum->getIndex()+1);//emplace after the index we found
-  }
-
-}
+//List general_list_of_views = List();
+//AvlTree<Course,int> general_courses_tree = AvlTree<Course,int>();
 
 
 
@@ -43,11 +17,11 @@ static void linkToListOfViews(MyClass &clas,int sum){
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
 //
 //
-StatusType CoursesManager::AddCourse (void *DS, int courseID, int numOfClasses){
-    if((DS==nullptr)||(numOfClasses<0)){
+CMResult CoursesManager::AddCourse (int courseID, int numOfClasses){
+    if((numOfClasses<0)){
         return CM_INVALID_INPUT;
     }
-    if(general_course_tree.getElementptr(courseID)==nullptr){
+    if(general_courses_tree.getElementptr(courseID)==nullptr){
         return CM_FAILURE;
     }
 
@@ -65,11 +39,11 @@ StatusType CoursesManager::AddCourse (void *DS, int courseID, int numOfClasses){
 // removes from tree of views, if only view then deletes the sum in general views list
 // removes from general tree
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
-StatusType CoursesManager::RemoveCourse(void *DS, int courseID) {
-    if ((DS == nullptr) || (courseID < 0)) {
+CMResult CoursesManager::RemoveCourse(int courseID) {
+    if ((courseID < 0)) {
         return CM_INVALID_INPUT;
     }
-    if (general_course_tree.getElementptr(courseID) == nullptr) {
+    if (general_courses_tree.getElementptr(courseID) == nullptr) {
         return CM_FAILURE;
     }
 
@@ -95,7 +69,7 @@ StatusType CoursesManager::RemoveCourse(void *DS, int courseID) {
             class_views.getTreeOfViews()->remove(
                     courseID); //removing the course from the tree of sums
             if (class_views.getTreeOfViews()->getNumNodes() == 0) {
-                general_list_of_views.remove(class_views);
+                general_views_list.remove(class_views);
             }
             delete c->deleteClass(clas_arr[i].getIndex());
             i++;
@@ -106,9 +80,9 @@ StatusType CoursesManager::RemoveCourse(void *DS, int courseID) {
 }
 
 // need to put "new" in front of avltree ctor?
-StatusType WatchClass(void *DS, int courseID, int classID, int time){
+CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
     try{
-        if(DS == nullptr || courseID <= 0 || classID < 0 || time <= 0 ||
+        if(courseID <= 0 || classID < 0 || time <= 0 ||
             classID + 1 > general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
@@ -140,10 +114,10 @@ StatusType WatchClass(void *DS, int courseID, int classID, int time){
         if(curr_node_tree.getElementptr(courseID)->getFirst() == nullptr){
             curr_node_tree.remove(courseID);
         }
-        if(curr_node_tree.getFirst() == nullptr && curr_node_tree != general_list_of_views.getListsFirstNode()){
+        if(curr_node_tree.getFirst() == nullptr && curr_node_tree != general_views_list.getListsFirstNode()){
             ListNode* old_views_node = curr_views_node;
             curr_views_node = curr_views_node->getNextNode();
-            general_list_of_views.removeListNode(old_views_node);
+            general_views_list.removeListNode(old_views_node);
         }
         // add the new
         while(curr_views_node->getTimeOfViews() <= new_time_of_views){
@@ -151,8 +125,8 @@ StatusType WatchClass(void *DS, int courseID, int classID, int time){
         }
         if(curr_views_node->getTimeOfViews() > new_time_of_views){
             AvlTree<AvlTree<int, int> *, int> &new_node_tree = *(new AvlTree<AvlTree<int, int> *, int>()); //check if "new" and "*" is actually needed
-            general_list_of_views.insertListNode(curr_views_node,new_node_tree,new_time_of_views);
-            curr_views_node = new_views_node;
+            general_views_list.insertListNode(curr_views_node,new_node_tree,new_time_of_views);
+            curr_views_node = curr_views_node->getNextNode();
         }
         curr_node_tree = curr_views_node->getViewsCoursesTree();
         if(curr_node_tree.getElementptr(courseID) == nullptr){ // create a new node for the course if doesnt exist
@@ -184,9 +158,9 @@ StatusType WatchClass(void *DS, int courseID, int classID, int time){
     }
 }
 
-StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed){
+CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
     try{
-        if(DS == nullptr || courseID <= 0 || classID < 0 ||
+        if(courseID <= 0 || classID < 0 ||
                 classID > general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
@@ -201,9 +175,9 @@ StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed){
     }
 }
 
-StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *classes){
+CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, int *classes){
     try{
-        if(DS == nullptr || numOfClasses <= 0){
+        if(numOfClasses <= 0){
             return CM_INVALID_INPUT;
         }
         if(num_of_courses < numOfClasses){
@@ -219,7 +193,7 @@ StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *c
             // if last course, go to prev node in list
 
         int counter = 0;
-        ListNode* curr_views_node = general_list_of_views.getListsFirstNode();
+        ListNode* curr_views_node = general_views_list.getListsFirstNode();
         AvlTree<int,int>* curr_course = curr_views_node->getViewsCoursesTree().getFirst();
         int* curr_song = curr_course->getFirst();
 
@@ -241,6 +215,44 @@ StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *c
         return CM_ALLOCATION_ERROR;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+//helper func to link to the general list of views, not specifically for addCourse
+static void linkToListOfViews(MyClass &clas,int sum){
+      if(sum==0){
+          // check why getViesCoursesTree returns an int?
+          //general_list_of_views.getListsFirstNode()->getViewsCoursesTree()
+          //sveta's
+          general_list_of_views.getListsFirstNode()->getElementptr(clas.getIdOfCourse())->insert(clas.getIndex(),clas.getIndex());
+      }
+
+  else{
+
+      Views current_sum = general_list_of_views.getSumByIndex(clas.getViews());//general list of views->get the view obj of sum
+      int current_sum_value = current_sum.getSum(); //the sum into int var
+      while ((sum<current_sum_value)||(current_sum->next!=nullptr)){ //search for the next sum
+          current_sum = current_sum->next;
+          current_sum_value = current_sum->getData();
+          }
+      AvlTree<int,int> sum_value_tree; //create a tree of sum
+      sum_value_tree.insert(clas.getIndex(),clas.setIdOfCourse());//insert the clas index , ordered by the course id
+      general_list_of_views.emplace(sum_value_tree,current_sum->getIndex()+1);//emplace after the index we found
+  }
+
+}
+*/
 
 
 

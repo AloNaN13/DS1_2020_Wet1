@@ -23,7 +23,7 @@ typedef enum CMResult_t{
 class CoursesManager {
     //should be private!
 private:
-    AvlTree<Course,int> general_course_tree;
+    AvlTree<Course,int> general_courses_tree;
     List general_views_list;
     int num_of_courses;
 public:
@@ -40,11 +40,11 @@ public:
 
     //functions needed to be implemented in task
     // implement the init in library - using the ctor
-    StatusType AddCourse (void *DS, int courseID, int numOfClasses);
-    StatusType RemoveCourse(void *DS, int courseID);
-    StatusType WatchClass(void *DS, int courseID, int classID, int time);
-    StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed);
-    StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *classes);
+    CMResult AddCourse (int courseID, int numOfClasses);
+    CMResult RemoveCourse(int courseID);
+    CMResult WatchClass(int courseID, int classID, int time);
+    CMResult TimeViewed(int courseID, int classID, int *timeViewed);
+    CMResult GetMostViewedClasses(int numOfClasses, int *courses, int *classes);
     // implement the quit in library - using delete
 
 };
