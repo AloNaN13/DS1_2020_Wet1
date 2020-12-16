@@ -67,6 +67,8 @@ public:
     //dtor - implemented in cpp
     ~List();
 
+    static void deleteListsNodes(ListNode* node);
+
     //cctor + assign
     List(const List& list) = default;
     List& operator=(const List& list) = default;

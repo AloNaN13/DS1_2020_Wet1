@@ -14,7 +14,7 @@ StatusType getStatusTypeFromCMResult(CMResult res){
         case CM_ALLOCATION_ERROR:
             return ALLOCATION_ERROR;
     }
-    return 0;
+    return SUCCESS; // only for compilation - would not reach this line
 }
 
 

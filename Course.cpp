@@ -3,19 +3,23 @@
 #include <string.h>
 #include <iostream>
 #include "Course.h"
-#include "list.h"
+#include "List.h"
 
 using std::ostream;
 using std::cout;
 Course::Course(const int id, MyClass p[],int tot_views): _id(id), _p(p),_tot_views(tot_views) {
 
+    // ALON: I don't think we need this - it will never happen
+    /*
     if(_id<0){
         cout<<INVALID_INPUT;
     }
     if((_id!=id)||(_p==NULL)){
         cout<<ALLOCATION_ERROR;
     }
+    */
 }
+
 int Course::getId(){
     return _id;
 }
@@ -50,7 +54,4 @@ void Course::deleteClass(int index) {
  //   _p[index].setIndex(index);
     delete _p[this->getNumOfClasses()-1];
 }
-//
-// Created by svet on 12/2/2020.
-//
 

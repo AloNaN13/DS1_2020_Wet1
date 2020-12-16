@@ -6,7 +6,7 @@
 #define DATA_STRUCTS_1_COURSESMANAGER_H
 
 #include "AvlTree.h"
-#include "list.h"
+#include "List.h"
 #include "Course.h"
 #include "MyClass.h"
 
@@ -28,7 +28,7 @@ private:
     int num_of_courses;
 public:
     //ctor+dtor+ccot+assignop
-    CoursesManager(): total_num_of_courses(0) {}; // need to implement it more explicitly?
+    CoursesManager(): num_of_courses(0) {}; // need to implement it more explicitly?
     ~CoursesManager() = default;
     CoursesManager(const CoursesManager& courses_manager) = default;
     CoursesManager& operator=(const CoursesManager& courses_manager) = default;

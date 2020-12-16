@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.15)
 project(DS1_2020_Wet1)
 
@@ -8,28 +7,18 @@ include_directories(.)
 
 add_executable(DS1_2020_Wet1
         AVL_tests_OLD.h
+        AvlTree.h
         AvlTree_OLD.h
-        library.h
+        Course.cpp
+        Course.h
+        CoursesManager.cpp
+        CoursesManager.h
         library.cpp
-        main1.cpp
+        library.h
         List.cpp
         List.h
-)
-
-cmake_minimum_required(VERSION 3.10)
-project(DS1_2020_Wet1)
-
-set(CMAKE_CXX_STANDARD 11)
-
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic-errors -Werror")
-
-add_executable(Course.h
-        Course.cpp
+        main1.cpp
         MyClass.cpp
         MyClass.h
-        AvlTree.h
-        Views.h
         Views.cpp
-        CoursesManager.cpp
-        CoursesManager.h)
->>>>>>> main
+        Views.h)

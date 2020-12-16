@@ -11,7 +11,7 @@
 //AvlTree<Course,int> general_courses_tree = AvlTree<Course,int>();
 
 
-
+/*
 //adds a course
 // adds to general tree, views tree and to sum 0 in general list sums
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
@@ -78,6 +78,7 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
         return CM_SUCCESS;
     }
 }
+ */
 
 // need to put "new" in front of avltree ctor?
 CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
@@ -114,7 +115,7 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         if(curr_node_tree.getElementptr(courseID)->getFirst() == nullptr){
             curr_node_tree.remove(courseID);
         }
-        if(curr_node_tree.getFirst() == nullptr && curr_node_tree != general_views_list.getListsFirstNode()){
+        if(curr_node_tree.getFirst() == nullptr && curr_views_node != general_views_list.getListsFirstNode()){
             ListNode* old_views_node = curr_views_node;
             curr_views_node = curr_views_node->getNextNode();
             general_views_list.removeListNode(old_views_node);
@@ -124,14 +125,14 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
             curr_views_node = curr_views_node->getNextNode();
         }
         if(curr_views_node->getTimeOfViews() > new_time_of_views){
-            AvlTree<AvlTree<int, int> *, int> &new_node_tree = *(new AvlTree<AvlTree<int, int> *, int>()); //check if "new" and "*" is actually needed
+            AvlTree<AvlTree<int, int>, int> &new_node_tree = *(new AvlTree<AvlTree<int, int>, int>()); //check if "new" and "*" is actually needed
             general_views_list.insertListNode(curr_views_node,new_node_tree,new_time_of_views);
             curr_views_node = curr_views_node->getNextNode();
         }
         curr_node_tree = curr_views_node->getViewsCoursesTree();
         if(curr_node_tree.getElementptr(courseID) == nullptr){ // create a new node for the course if doesnt exist
             AvlTree<int,int> new_classes_tree_for_course; // maybe use cctor?
-            curr_node_tree.insert(new_classes_tree_for_course,int);
+            curr_node_tree.insert(new_classes_tree_for_course,courseID);
         }
         // there should be no chance of an exact classes node (int), so we dont check it
         curr_node_tree.getElementptr(courseID)->insert(classID,classID);
@@ -167,7 +168,7 @@ CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
         if(general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
         }
-        timeViewed = general_courses_tree.getElementptr(courseID)->getClasses() + classID;
+        *timeViewed = general_courses_tree.getElementptr(courseID)->getClasses()[classID].getViews();
             //check if it is ok to fetch the classes array like this
         return CM_SUCCESS;
     } catch(...){

@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "List.h"
-#include "CoursesManager.h"
 //#include "Views.h"
 
 class MyClass{

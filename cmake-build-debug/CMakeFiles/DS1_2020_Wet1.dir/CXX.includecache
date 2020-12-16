@@ -22,45 +22,17 @@ iostream
 assert.h
 -
 
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.cpp
-MyClass.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
-string.h
--
-iostream
--
-Course.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.h
-list.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/list.h
-
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.h
 iostream
 -
 MyClass.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
-CoursesManager.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
 
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.cpp
-CoursesManager.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
-Course.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.h
-Views.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.h
-MyClass.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
 AvlTree.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AvlTree.h
 List.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/List.h
-
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
-AvlTree.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AvlTree.h
-list.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/list.h
 Course.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.h
 MyClass.h
@@ -70,39 +42,11 @@ MyClass.h
 AVLTree.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AVLTree.h
 
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.cpp
-string.h
--
-MyClass.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
-list.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/list.h
-iostream
--
-AvlTree.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AvlTree.h
-
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
 iostream
 -
-list.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/list.h
-CoursesManager.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
-Views.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.h
-
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.cpp
-Views.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.h
-
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.h
-AvlTree.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AvlTree.h
-MyClass.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.h
-CoursesManager.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
+List.h
+/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/List.h
 
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/library.cpp
 library.h
@@ -111,8 +55,4 @@ CoursesManager.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/CoursesManager.h
 
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/library.h
-
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/list.h
-AVLTree.h
-/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AVLTree.h
 
