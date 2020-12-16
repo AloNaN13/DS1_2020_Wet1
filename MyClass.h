@@ -25,7 +25,7 @@ public :
     //set func
     void setIdOfCourse(const int id);
     void setIndex(int i);
-    void setListOfViews(list* new_sum_of_views);
+    void setListOfViews(ListNode* new_sum_of_views);
     void setViews(int views);
 
 };

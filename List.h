@@ -19,17 +19,17 @@ typedef enum ListResult_t{
 class ListNode{
 private:
     const int time_of_views;
-    AvlTree<AvlTree<int,int>*,int>& views_courses; // why reference?
+    AvlTree<AvlTree<int,int>,int> views_courses; // reference? should be <int,int>*?
     ListNode* prev_node;
     ListNode* next_node;
 public:
     //ctor
     // change pointer and reference? create with next and prev?
     explicit ListNode(int time_of_views): time_of_views(time_of_views),
-                                views_courses(*(new AvlTree<AvlTree<int,int>*,int>())),
+                                views_courses(*(new AvlTree<AvlTree<int,int>,int>())),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
-    ListNode(int time_of_views, AvlTree<AvlTree<int,int>*,int>& views_courses): time_of_views(time_of_views),
+    ListNode(int time_of_views, AvlTree<AvlTree<int,int>,int>& views_courses): time_of_views(time_of_views),
                                 views_courses(views_courses),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
@@ -48,7 +48,7 @@ public:
     void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
 
     // other functions
-    AvlTree<Avltree<int,int>*,int>& getViewsCoursesTree() {return this->views_courses;};
+    AvlTree<AvlTree<int,int>,int>& getViewsCoursesTree() {return this->views_courses;};
     int getTimeOfViews() {return this->time_of_views;};
 
 };
@@ -82,7 +82,7 @@ public:
     removenode
 
 
-    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& views_courses, int time_of_views);
+    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>,int>& views_courses, int time_of_views);
     ListResult removeListNode(ListNode* node);
 
 
