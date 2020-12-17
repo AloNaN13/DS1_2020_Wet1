@@ -1,28 +1,23 @@
-//
-// Created by svet on 12/2/2020.
-//
 
 #ifndef DATA_SCTRUCTS_1_COURSE_H
 #define DATA_SCTRUCTS_1_COURSE_H
+
 #include <iostream>
 #include "MyClass.h"
-#include "CoursesManager.h"
 
 using std::string;
 using std::ostream;
 
-
-
 class Course{
 private:
     int _id;
-    MyClass _p[];
+    MyClass* _p;
     int _tot_views;
-public :
+public:
     Course() = default;
-    Course(const Course &course) = default;
-    Course(const int id, MyClass p[],int tot_views );
+    Course(const int id, MyClass* p,int tot_views);
     ~Course();
+    //Course(const Course &course) = default;
     int getId();
     MyClass* getClasses();
     int getTotViews();
@@ -31,7 +26,6 @@ public :
     void setTotViews(int i);
     int getNumOfClasses();
     void deleteClass(int index);
-
 };
 
 #endif //DATA_SCTRUCTS_1_COURSE_H

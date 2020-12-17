@@ -1,16 +1,16 @@
 
 #include "List.h"
 
-List::~List(){
-    if(first_node){
-        deleteListsNodes(first_node);
+void List::deleteListsNodes(ListNode* node){
+    if(node){
+        deleteListsNodes(node->getNextNode());
+        delete(node);
     }
 }
 
-void List::deleteListsNodes(ListNode* node){
-    if(node){
-        deleteListsNodes(node->getNextNode())
-        delete(node);
+List::~List(){
+    if(first_node){
+        deleteListsNodes(first_node);
     }
 }
 
@@ -18,7 +18,7 @@ void List::deleteListsNodes(ListNode* node){
 // need to check if the node exists?
 // check if indeed inside avlTree in <int,int>
 ListResult List::insertListNode(ListNode *curr_node,
-                                AvlTree<AvlTree<int, int> *, int> &views_courses,
+                                AvlTree<AvlTree<int, int>, int> &views_courses,
                                 int time_of_views) {
     ListNode* new_node = new ListNode(time_of_views,views_courses);
     if(curr_node->getNextNode() != nullptr){

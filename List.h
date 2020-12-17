@@ -19,36 +19,36 @@ typedef enum ListResult_t{
 class ListNode{
 private:
     const int time_of_views;
-    AvlTree<AvlTree<int,int>*,int>& views_courses; // why reference?
+    AvlTree<AvlTree<int,int>,int> views_courses; // reference? should be <int,int>*?
     ListNode* prev_node;
     ListNode* next_node;
 public:
     //ctor
     // change pointer and reference? create with next and prev?
     explicit ListNode(int time_of_views): time_of_views(time_of_views),
-                                views_courses(*(new AvlTree<AvlTree<int,int>*,int>())),
+                                views_courses(*(new AvlTree<AvlTree<int,int>,int>())),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
-    ListNode(int time_of_views, AvlTree<AvlTree<int,int>*,int>& views_courses): time_of_views(time_of_views),
+    ListNode(int time_of_views, AvlTree<AvlTree<int,int>,int>& views_courses): time_of_views(time_of_views),
                                 views_courses(views_courses),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
 
     //dtor
-    ~ListNode() {delete(&views_courses)};
+    ~ListNode() {delete(&views_courses);};
 
     //cctor + assign
     //ListNode(const ListNode& node) = default;
     //ListNode& operator=(const ListNode& node) = default;
 
     // setters+getters
-    ListNode* getPrevNode() {return this->prev_node};
-    ListNode* getNextNode() {return this->next_node};
-    void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node};
-    void setNextNode(ListNode* new_next_node) {this->next_node = new_prev_node};
+    ListNode* getPrevNode() {return this->prev_node;};
+    ListNode* getNextNode() {return this->next_node;};
+    void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node;};
+    void setNextNode(ListNode* new_next_node) {this->next_node = new_next_node;};
 
     // other functions
-    AvlTree<Avltree<int,int>*,int>& getViewsCoursesTree() {return this->views_courses;};
+    AvlTree<AvlTree<int,int>,int>& getViewsCoursesTree() {return this->views_courses;};
     int getTimeOfViews() {return this->time_of_views;};
 
 };
@@ -67,6 +67,8 @@ public:
     //dtor - implemented in cpp
     ~List();
 
+    static void deleteListsNodes(ListNode* node);
+
     //cctor + assign
     List(const List& list) = default;
     List& operator=(const List& list) = default;
@@ -74,31 +76,13 @@ public:
     // getters
     ListNode* getListsFirstNode() {return this->first_node;};
     ListNode* getListsLastNode() {return this->last_node;};
-
     // any need for setters?
 
     // other functions
-    insertnode
-    removenode
-
-
-    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>*,int>& views_courses, int time_of_views);
+    ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>,int>& views_courses, int time_of_views);
     ListResult removeListNode(ListNode* node);
-
-
-    // get avltree?
 
 };
 
 
 #endif //DS1_2020_WET1_LIST_H
-
-
-public:
-
-
-    void deleteAllStreamNodes(StreamListNode* node);
-
-
-
-};

@@ -6,7 +6,7 @@
 #define DATA_STRUCTS_1_COURSESMANAGER_H
 
 #include "AvlTree.h"
-#include "list.h"
+#include "List.h"
 #include "Course.h"
 #include "MyClass.h"
 
@@ -23,28 +23,28 @@ typedef enum CMResult_t{
 class CoursesManager {
     //should be private!
 private:
-    AvlTree<Course,int> general_course_tree;
+    AvlTree<Course,int> general_courses_tree;
     List general_views_list;
-    int total_num_of_courses;
+    int num_of_courses;
 public:
     //ctor+dtor+ccot+assignop
-    CoursesManager(): total_num_of_courses(0) {}; // need to implement it more explicitly?
+    CoursesManager(): num_of_courses(0) {}; // need to implement it more explicitly?
     ~CoursesManager() = default;
     CoursesManager(const CoursesManager& courses_manager) = default;
     CoursesManager& operator=(const CoursesManager& courses_manager) = default;
 
     //getters
-    AvlTree<Course,int>& getGeneralCourseTree() {return this->general_course_tree;};
-    List& getGeneralViewsList() {return this->general_views_list;};
+    //AvlTree<Course,int>& getGeneralCourseTree() {return this->general_course_tree;};
+    //List& getGeneralViewsList() {return this->general_views_list;};
     //any need for getter or setter for total_nunm_of_courses?
 
     //functions needed to be implemented in task
     // implement the init in library - using the ctor
-    StatusType AddCourse (void *DS, int courseID, int numOfClasses);
-    StatusType RemoveCourse(void *DS, int courseID);
-    StatusType WatchClass(void *DS, int courseID, int classID, int time);
-    StatusType TimeViewed(void *DS, int courseID, int classID, int *timeViewed);
-    StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *classes);
+    CMResult AddCourse (int courseID, int numOfClasses);
+    CMResult RemoveCourse(int courseID);
+    CMResult WatchClass(int courseID, int classID, int time);
+    CMResult TimeViewed(int courseID, int classID, int *timeViewed);
+    CMResult GetMostViewedClasses(int numOfClasses, int *courses, int *classes);
     // implement the quit in library - using delete
 
 };

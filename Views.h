@@ -2,6 +2,13 @@
 // Created by svet on 12/3/2020.
 //
 
+
+// TO ERASE - NO NEED FOR CLASS
+
+
+
+
+/*
 #ifndef DATA_STRUCTS_1_VIEWS_H
 #define DATA_STRUCTS_1_VIEWS_H
 
@@ -28,3 +35,4 @@ public :
 };
 
 #endif //DATA_STRUCTS_1_VIEWS_H
+*/

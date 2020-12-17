@@ -48,5 +48,3 @@ void MyClass::setListOfViews (ListNode* new_sum_of_views) {
 void MyClass::setViews(int views) {
     _views = views;
 }
-
-};
