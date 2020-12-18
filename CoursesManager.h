@@ -23,7 +23,7 @@ typedef enum CMResult_t{
 class CoursesManager {
     //should be private!
 private:
-    AvlTree<Course,int> general_courses_tree;
+    AvlTree<Course,int> _general_courses_tree;
     List general_views_list;
     int num_of_courses;
 public:
@@ -45,6 +45,7 @@ public:
     CMResult WatchClass(int courseID, int classID, int time);
     CMResult TimeViewed(int courseID, int classID, int *timeViewed);
     CMResult GetMostViewedClasses(int numOfClasses, int *courses, int *classes);
+    AvlTree<Course,int>* getGeneralCoursesTree();
     // implement the quit in library - using delete
 
 };

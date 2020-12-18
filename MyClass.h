@@ -16,7 +16,7 @@ public :
     MyClass(int index, int id_of_course);
     MyClass() = default;
     MyClass(MyClass &MyClass) = default;
-    ~MyClass();
+    ~MyClass() = default;
     //get func
     int getIndex();
     ListNode* getListOfViews();
@@ -27,6 +27,7 @@ public :
     void setIndex(int i);
     void setListOfViews(ListNode* new_sum_of_views);
     void setViews(int views);
+    void deleteClass();
 };
 
 #endif //DATA_SCTRUCTS_1_MyClass_H

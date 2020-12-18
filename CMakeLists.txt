@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.13)
 project(DS1_2020_Wet1)
 
 set(CMAKE_CXX_STANDARD 14)
