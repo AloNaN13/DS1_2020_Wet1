@@ -285,6 +285,33 @@ library.cpp.s:
 	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/library.cpp.s
 .PHONY : library.cpp.s
 
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 main1.o: main1.cpp.o
 
 .PHONY : main1.o
@@ -339,6 +366,9 @@ help:
 	@echo "... library.o"
 	@echo "... library.i"
 	@echo "... library.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... main1.o"
 	@echo "... main1.i"
 	@echo "... main1.s"

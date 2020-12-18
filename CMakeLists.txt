@@ -17,6 +17,7 @@ add_executable(DS1_2020_Wet1
         library.h
         List.cpp
         List.h
+        main.cpp
         main1.cpp
         MyClass.cpp
         MyClass.h
