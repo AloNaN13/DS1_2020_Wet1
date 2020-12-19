@@ -3,6 +3,7 @@ project(DS1_2020_Wet1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+
 include_directories(.)
 
 add_executable(DS1_2020_Wet1
@@ -17,7 +18,6 @@ add_executable(DS1_2020_Wet1
         library.h
         List.cpp
         List.h
-        main.cpp
         main1.cpp
         MyClass.cpp
         MyClass.h

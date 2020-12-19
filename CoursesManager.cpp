@@ -25,7 +25,8 @@ CMResult CoursesManager::AddCourse (int courseID, int numOfClasses){
     }
 
     auto *class_arr = new MyClass[numOfClasses];
-    int classes_array_by_index[numOfClasses];
+    int *classes_array_by_index;
+    classes_array_by_index = new int[numOfClasses*sizeof (int)];
     for(int i=0;i<numOfClasses;i++){
 //in the method of creating the class the views are set to 0 so no need to init now
         class_arr[i].setIndex(i);
@@ -40,7 +41,7 @@ CMResult CoursesManager::AddCourse (int courseID, int numOfClasses){
     AvlTree<AvlTree<int,int>,int> course_views = general_views_list.getListsFirstNode()->getViewsCoursesTree();//pointer?tree
     course_views.insert(classes_tree,courseID);//insert of list: node of sum [0]->{[courseId]->[tree_ofclasses]}
     _general_courses_tree.insert(*course,course->getId());
-
+    return CM_SUCCESS;
 }
 
 // removes from tree of views, if only view then deletes the sum in general views list
@@ -82,6 +83,7 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
         _general_courses_tree.remove(courseID);
         return CM_SUCCESS;
     }
+    return CM_SUCCESS;
 }
 
 
@@ -162,6 +164,7 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
     } catch(...){
         return CM_ALLOCATION_ERROR;
     }
+    return CM_SUCCESS;
 }
 
 CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
