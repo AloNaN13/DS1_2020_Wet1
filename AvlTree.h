@@ -156,6 +156,7 @@ AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nu
     while(first && first->left_son){
         first=first->left_son;
     }
+    numOfNodes = num;
 }
 
 /***

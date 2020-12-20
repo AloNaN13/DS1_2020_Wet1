@@ -17,11 +17,11 @@ private:
     int _num_of_classes;
 
 public:
-    Course() = default;
-    Course(const int id, MyClass* p,int tot_views,int num_of_classes);
-    Course(const int id, MyClass* p,int num_of_classes);
+    //Course() = default;
+    //Course(const int id, MyClass* p,int tot_views,int num_of_classes);
+    Course(const int id, /*MyClass* p,*/int num_of_classes);
     ~Course() = default;
-    //Course(const Course &course) = default;
+    Course(const Course &course);
     int getId();
     MyClass* getClasses();
     int getTotViews();
@@ -30,7 +30,7 @@ public:
     void setTotViews(int i);
     int getNumOfClasses();
     void setNumOfClasses(int n);
-    void deleteClass(int index);
+    //void deleteClass(int index);
 };
 
 #endif //DATA_SCTRUCTS_1_COURSE_H

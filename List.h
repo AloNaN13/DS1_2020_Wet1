@@ -19,7 +19,7 @@ typedef enum ListResult_t{
 class ListNode{
 private:
     const int time_of_views;
-    AvlTree<AvlTree<int,int>,int> views_courses; // reference? should be <int,int>*?
+    AvlTree<AvlTree<int,int>,int>& views_courses; // reference? should be <int,int>*?
     ListNode* prev_node;
     ListNode* next_node;
 public:
