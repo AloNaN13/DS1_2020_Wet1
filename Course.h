@@ -5,7 +5,11 @@
 #include <iostream>
 #include "MyClass.h"
 #include "List.h"
-
+/***
+* STRUCT FOR THE COURSE OBJECT
+* @var _id, _p, _tot_views, _num_of_classes : the course ID, classes array, total course views, number of classes
+* using getters and setters
+*/
 using std::string;
 using std::ostream;
 

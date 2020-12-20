@@ -16,6 +16,14 @@
 // adds to general tree, views tree and to sum 0 in general list sums
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
  */
+
+    /***
+    * Adds a course to the system- adds to the general tree of courses
+     * connects to the sum "0" tree connected to the node in list of views and classes to the tree under the course
+     * @param courseID,numOfClasses - the course ID and number of classes to add
+    * @return result
+    */
+
 CMResult CoursesManager::AddCourse(int courseID, int numOfClasses){
     try{
         if(courseID <= 0 || numOfClasses <= 0){
@@ -221,13 +229,15 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
 
 CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
     try{
-        if(courseID <= 0 || classID < 0){
+        if(courseID <= 0 || classID < 0 ){
             return CM_INVALID_INPUT;
         }
+
         if(_general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
         }
-        if(classID > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+
+        if(classID+1 > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
 

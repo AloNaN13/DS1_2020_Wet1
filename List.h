@@ -3,6 +3,12 @@
 #define DS1_2020_WET1_LIST_H
 
 #include "AVLTree.h"
+/***
+* !!NOT A GENERIC LIST!!
+ * each node represents sum of views
+ * the list holds an AVL tree of courses IDs and AVLtrees of classes, the classes must have the nodes "sum" of views per course
+ * a two sided list!
+*/
 
 typedef enum ListResult_t{
     LIST_SUCCESS,
@@ -23,8 +29,9 @@ private:
     ListNode* prev_node;
     ListNode* next_node;
 public:
-    //ctor
-    // change pointer and reference? create with next and prev?
+        /***
+    * List node usual functions of ctor , dtor , cctor, managing nodes
+    */
     explicit ListNode(int time_of_views): time_of_views(time_of_views),
                                 views_courses(*(new AvlTree<AvlTree<int,int>,int>())),
                                 prev_node(nullptr),
@@ -48,6 +55,10 @@ public:
     void setNextNode(ListNode* new_next_node) {this->next_node = new_next_node;};
 
     // other functions
+     /***
+    * getViewsCoursesTree() - special function for getting the courses tree under each node
+    * getTimeOfViews() - returns the "sum" of views of the node
+    */
     AvlTree<AvlTree<int,int>,int>& getViewsCoursesTree() {return this->views_courses;};
     int getTimeOfViews() {return this->time_of_views;};
 
@@ -58,6 +69,9 @@ private:
     ListNode* first_node;
     ListNode* last_node;
 public:
+        /***
+    * List usual functions of ctor , dtor , cctor, managing nodes
+    */
     //ctor
     List(): first_node(new ListNode(0)),
             last_node(nullptr) {

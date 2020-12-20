@@ -5,7 +5,12 @@
 #include <iostream>
 #include "List.h"
 //#include "Views.h"
-
+/***
+* STRUCT FOR THE CLASS OBJECT
+* @var _index, _id_of_course, _views, _views_of_class : the class index,
+* ID of course related, number of views for the class, ptr to the node in general views list of sum equal to views
+* using getters and setters
+*/
 class MyClass{
 private:
     int _index; //index of class
