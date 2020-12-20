@@ -109,18 +109,18 @@ CMakeFiles/DS1_2020_Wet1.dir/List.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DS1_2020_Wet1.dir/List.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/List.cpp -o CMakeFiles/DS1_2020_Wet1.dir/List.cpp.s
 
-CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o: CMakeFiles/DS1_2020_Wet1.dir/flags.make
-CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o: ../main1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o -c /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main1.cpp
+CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o: CMakeFiles/DS1_2020_Wet1.dir/flags.make
+CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o -c /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main.cpp
 
-CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main1.cpp > CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.i
+CMakeFiles/DS1_2020_Wet1.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DS1_2020_Wet1.dir/main.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main.cpp > CMakeFiles/DS1_2020_Wet1.dir/main.cpp.i
 
-CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main1.cpp -o CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.s
+CMakeFiles/DS1_2020_Wet1.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DS1_2020_Wet1.dir/main.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main.cpp -o CMakeFiles/DS1_2020_Wet1.dir/main.cpp.s
 
 CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.o: CMakeFiles/DS1_2020_Wet1.dir/flags.make
 CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.o: ../MyClass.cpp
@@ -154,7 +154,7 @@ DS1_2020_Wet1_OBJECTS = \
 "CMakeFiles/DS1_2020_Wet1.dir/CoursesManager.cpp.o" \
 "CMakeFiles/DS1_2020_Wet1.dir/library.cpp.o" \
 "CMakeFiles/DS1_2020_Wet1.dir/List.cpp.o" \
-"CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o" \
+"CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o" \
 "CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.o" \
 "CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.o"
 
@@ -165,7 +165,7 @@ DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/Course.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/CoursesManager.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/library.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/List.cpp.o
-DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o
+DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.o
 DS1_2020_Wet1.exe: CMakeFiles/DS1_2020_Wet1.dir/build.make

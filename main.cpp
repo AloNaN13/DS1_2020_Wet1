@@ -42,16 +42,16 @@ int main(){
 
 
     CoursesManager manager=*new CoursesManager();
-    manager.AddCourse(1,3);
-    manager.AddCourse(1,4);
-    manager.AddCourse(2,2);
+    manager.AddCourse(1,2);
+    manager.AddCourse(1,6);
+    manager.AddCourse(2,1);
 
-    //manager.MMAddArtist(3,2);
-    //manager.MMAddToSongCount(2,1);
-    //manager.MMAddToSongCount(3,0);
-    //manager.MMAddToSongCount(1,1);
+    manager.AddCourse(3,1);
+    manager.WatchClass(2,0,10);
+    manager.WatchClass(3,0,10);
+    manager.WatchClass(1,1,10);
 
-    manager.WatchClass(1,0,10);
+    manager.WatchClass(1,2,10);
     int timeViewed = 0;
     manager.TimeViewed(1,0,&timeViewed);
 
