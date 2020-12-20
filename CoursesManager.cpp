@@ -89,7 +89,12 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
             //delete the class from the courses array
             //course_to_remove->deleteClass(course_to_remove->getClasses()[i].getIndex());
         }
+        // update the num of courses for the Courses Manager
+        num_of_classes = num_of_classes - _general_courses_tree.getElementptr(courseID)->getNumOfClasses();
+
+        //remove the course from the general tree
         _general_courses_tree.remove(courseID);
+
         return CM_SUCCESS;
     } catch(...){
         return CM_ALLOCATION_ERROR;
@@ -254,19 +259,18 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
         ListNode* curr_views_node = general_views_list.getListsLastNode();
         AvlTree<int,int>* curr_course;
         int* curr_class;
+        int curr_course_id = 0;
 
-        while(counter < numOfClasses && curr_views_node->getViewsCoursesTree().getFirst() != nullptr){
+        while(counter < numOfClasses){
             curr_course = curr_views_node->getViewsCoursesTree().getFirst();
-            curr_class = curr_course->getFirst();
-            while(counter < numOfClasses){
-                int curr_course_id = curr_views_node->getViewsCoursesTree().getKey();
-                int curr_class_id = curr_views_node->getViewsCoursesTree().getElementptr(curr_course_id)->getKey();
-                while((counter < numOfClasses) && (curr_course->getFirst() != nullptr)){
+            while((counter < numOfClasses)  & (curr_course != nullptr)){
+                curr_course_id = curr_views_node->getViewsCoursesTree().getKey();
+                curr_class = curr_views_node->getViewsCoursesTree().getElementptr(curr_course_id)->getFirst();
+                while((counter < numOfClasses) && (curr_class != nullptr)){
                     courses[counter] = curr_course_id;
-                    classes[counter] = curr_class_id;
+                    classes[counter] = *curr_class;
                     counter++;
                     curr_class = curr_course->getNext();
-                    curr_class_id = *curr_class;
                 }
                 // am i doing it correctly?
                 curr_course = curr_views_node->getViewsCoursesTree().getNext();

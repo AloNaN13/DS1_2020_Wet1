@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/MyClass.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.o"
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Views.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.o"
   "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/library.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles/DS1_2020_Wet1.dir/library.cpp.o"
-  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o"
+  "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/main1.cpp" "/cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/cmake-build-debug/CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

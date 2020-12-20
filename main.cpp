@@ -42,11 +42,11 @@ int main(){
 
 
     CoursesManager manager=*new CoursesManager();
-    manager.AddCourse(1,2);
+    manager.AddCourse(1,5);
     manager.AddCourse(1,6);
-    manager.AddCourse(2,1);
+    manager.AddCourse(2,5);
 
-    manager.AddCourse(3,1);
+    manager.AddCourse(3,5);
     manager.WatchClass(2,0,10);
     manager.WatchClass(3,0,10);
     manager.WatchClass(1,1,10);
@@ -57,10 +57,10 @@ int main(){
 
     manager.RemoveCourse(1);
 
-    int courses[2];
-    int classes[2];
-    manager.GetMostViewedClasses(2,courses,classes);
-    for(int i = 0; i < 2; i++){
+    int courses[15] = {-20};
+    int classes[15] = {-20};
+    manager.GetMostViewedClasses(9,courses,classes);
+    for(int i = 0; i < 9; i++){
         printf("number %d: course %d, class %d.\n", i+1, courses[i], classes[i]);
     }
 
