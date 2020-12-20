@@ -21,15 +21,15 @@ ListResult List::insertListNode(ListNode *curr_node,
                                 AvlTree<AvlTree<int, int>, int> &views_courses,
                                 int time_of_views) {
     ListNode* new_node = new ListNode(time_of_views,views_courses);
-    if(curr_node->getNextNode() != nullptr){
-        new_node->getNextNode()->setPrevNode(new_node);
+    if(curr_node != last_node){
+        curr_node->getNextNode()->setPrevNode(new_node);
         new_node->setNextNode(curr_node->getNextNode());
     }
-    new_node->setPrevNode(curr_node);
-    curr_node->setNextNode(new_node);
     if(curr_node == last_node){
         last_node = new_node;
     }
+    new_node->setPrevNode(curr_node);
+    curr_node->setNextNode(new_node);
     return LIST_SUCCESS;
 }
 
