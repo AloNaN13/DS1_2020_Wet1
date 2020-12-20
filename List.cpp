@@ -44,7 +44,7 @@ ListResult List::removeListNode(ListNode *node) {
         //ERROR? should happen only in quit
     }
     // check if works ok - find last node indeed
-    if(node->getNextNode() != last_node){
+    if(node != last_node){
         node->getNextNode()->setPrevNode(node->getPrevNode());
     }
     else{ // it is the last node

@@ -9,7 +9,7 @@
 using std::endl;
 using std::cout;
 
-MyClass::MyClass(int index, int id_of_course):_index(index),_id_of_course(id_of_course),_views(0),_views_of_class(NULL){
+MyClass::MyClass(int index, int id_of_course):_index(index),_id_of_course(id_of_course),_views(0),_views_of_class(nullptr){
 /*
     if((_index<0)||(general_courses_tree.find(_id_of_course)==-1){
         cout<<INVALID_INPUT;
@@ -19,6 +19,10 @@ MyClass::MyClass(int index, int id_of_course):_index(index),_id_of_course(id_of_
         }
         */
 }
+
+MyClass::MyClass(const MyClass& myClass): _index(myClass._index),_id_of_course(myClass._id_of_course),
+        _views(myClass._views), _views_of_class(myClass._views_of_class) {};
+
 //get func
 int MyClass::getIdOfCourse() {
     return _id_of_course;
@@ -51,8 +55,11 @@ void MyClass::setListOfViews (ListNode* new_sum_of_views) {
 void MyClass::setViews(int views) {
     _views = views;
 }
+
+/*
 void MyClass::deleteClass(){
     delete _views_of_class;
-    delete this;}
-
+    delete this;
+}
+*/
 

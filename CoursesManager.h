@@ -25,10 +25,10 @@ class CoursesManager {
 private:
     AvlTree<Course,int> _general_courses_tree;
     List general_views_list;
-    int num_of_courses;
+    int num_of_classes;
 public:
     //ctor+dtor+ccot+assignop
-    CoursesManager(): num_of_courses(0) {}; // need to implement it more explicitly?
+    CoursesManager(): num_of_classes(0) {}; // need to implement it more explicitly?
     ~CoursesManager() = default;
     CoursesManager(const CoursesManager& courses_manager) = default;
     CoursesManager& operator=(const CoursesManager& courses_manager) = default;

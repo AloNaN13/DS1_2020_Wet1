@@ -16,46 +16,88 @@
 // adds to general tree, views tree and to sum 0 in general list sums
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
  */
-CMResult CoursesManager::AddCourse (int courseID, int numOfClasses){
-    if((numOfClasses<0)){
-        return CM_INVALID_INPUT;
-    }
-    if(_general_courses_tree.getElementptr(courseID)==nullptr){
-        return CM_FAILURE;
-    }
+CMResult CoursesManager::AddCourse(int courseID, int numOfClasses){
+    try{
+        if(courseID <= 0 || numOfClasses <= 0){
+            return CM_INVALID_INPUT;
+        }
+        if(_general_courses_tree.getElementptr(courseID) != nullptr){
+            return CM_FAILURE;
+        }
 
-    auto *class_arr = new MyClass[numOfClasses];
-    int classes_array_by_index[numOfClasses];
-    for(int i=0;i<numOfClasses;i++){
-//in the method of creating the class the views are set to 0 so no need to init now
-        class_arr[i].setIndex(i);
-        class_arr[i].setIdOfCourse(courseID);
-        class_arr[i].setListOfViews(general_views_list.getListsFirstNode());
-        classes_array_by_index[i] = class_arr[i].getIndex();
-    }
-    auto *course = new Course(courseID,class_arr,numOfClasses);
-    AvlTree<int,int> classes_tree(classes_array_by_index,classes_array_by_index,numOfClasses);
-    AvlTree<int,int>* classes_tree_ptr = &classes_tree;
-  //  const AvlTree<AvlTree<int,int>,int> course_and_classes_tree(classes_tree_ptr ,&courseID,numOfClasses);
-    AvlTree<AvlTree<int,int>,int> course_views = general_views_list.getListsFirstNode()->getViewsCoursesTree();//pointer?tree
-    course_views.insert(classes_tree,courseID);//insert of list: node of sum [0]->{[courseId]->[tree_ofclasses]}
-    _general_courses_tree.insert(*course,course->getId());
+        // create course and insert it to the general courses tree
+        Course* course_to_add = new Course(courseID, numOfClasses);
+        _general_courses_tree.insert(*course_to_add, courseID);
+        // all classes will now point to 0 views in views_list
+        for(int i = 0; i < numOfClasses; i++){
+            _general_courses_tree.getElementptr(courseID)->getClasses()[i].setListOfViews(general_views_list.getListsFirstNode());
+        }
+        // create the classes tree (inside courses node in the views courses tree)
+        int classes_arr_by_index[numOfClasses]/* = new int[numOfClasses]*/;
+        for(int i = 0; i < numOfClasses; i++){
+            classes_arr_by_index[i] = i;
+        }
+        AvlTree<int,int> classes_tree_from_arr(classes_arr_by_index, classes_arr_by_index, numOfClasses);
+        general_views_list.getListsFirstNode()->getViewsCoursesTree().insert(classes_tree_from_arr, courseID);
+        // delete[] classes_arr_by_index;
+        // update the num of courses for the Courses Manager
+        num_of_classes = num_of_classes + numOfClasses;
 
+        return CM_SUCCESS;
+    } catch(...){
+        return CM_ALLOCATION_ERROR;
+    }
 }
 
 // removes from tree of views, if only view then deletes the sum in general views list
 // removes from general tree
-// SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
 CMResult CoursesManager::RemoveCourse(int courseID) {
-    if ((courseID < 0)) {
-        return CM_INVALID_INPUT;
-    }
-    if (_general_courses_tree.getElementptr(courseID) == nullptr) {
-        return CM_FAILURE;
+    try{
+        if (courseID <= 0){
+            return CM_INVALID_INPUT;
+        }
+        if (_general_courses_tree.getElementptr(courseID) == nullptr){
+            return CM_FAILURE;
+        }
+
+        // get the course to remove
+        Course* course_to_remove = _general_courses_tree.getElementptr(courseID);
+
+        for(int i = 0; i < course_to_remove->getNumOfClasses(); i++) {
+            //get the relevant node in the views list
+            ListNode* list_node_to_remove_from = course_to_remove->getClasses()[i].getListOfViews();
+            //get the tree that represents the course's classes with this num of views
+            AvlTree<int,int>* views_course_tree_to_remove = list_node_to_remove_from->getViewsCoursesTree().getElementptr(courseID);
+            //remove all of the nodes in that tree - all of the courses classes with the num of views
+            if(views_course_tree_to_remove == nullptr){
+                continue;
+            }
+            int* class_to_remove = views_course_tree_to_remove->getFirst();
+            while(views_course_tree_to_remove->getNumNodes() > 0){
+                int* next_node_to_remove = views_course_tree_to_remove->getNext();
+                views_course_tree_to_remove->remove(*class_to_remove);
+                class_to_remove = next_node_to_remove;
+            }
+            //remove the courses node in the from the tree
+            list_node_to_remove_from->getViewsCoursesTree().remove(courseID);
+            //check if there are no more courses under the views list node - if so, remove the node as long as it's not 0
+            if(list_node_to_remove_from->getViewsCoursesTree().getNumNodes() == 0 &&
+               (list_node_to_remove_from != general_views_list.getListsFirstNode())) {
+                general_views_list.removeListNode(list_node_to_remove_from);
+            }
+
+            //delete the class from the courses array
+            //course_to_remove->deleteClass(course_to_remove->getClasses()[i].getIndex());
+        }
+        _general_courses_tree.remove(courseID);
+        return CM_SUCCESS;
+    } catch(...){
+        return CM_ALLOCATION_ERROR;
     }
 
+// Sveta's Old Code
+/*
     Course *c = _general_courses_tree.getElementptr(courseID); //getting the course element
-    // int len = c->getNumOfClasses();//len of arr of classes
     int num_of_classes = c->getNumOfClasses();
     MyClass *clas_arr(c->getClasses()); //getting the classes arr
     int tmp_remove = 0;
@@ -82,18 +124,21 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
         _general_courses_tree.remove(courseID);
         return CM_SUCCESS;
     }
-}
+*/
 
+}
 
 // need to put "new" in front of avltree ctor?
 CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
     try{
-        if(courseID <= 0 || classID < 0 || time <= 0 ||
-            classID + 1 > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+        if(courseID <= 0 || classID < 0 || time <= 0){
             return CM_INVALID_INPUT;
         }
         if(_general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
+        }
+        if(classID /*+ 1 */> _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+            return CM_INVALID_INPUT;
         }
 
         // go to course
@@ -110,37 +155,40 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         // point the class in the class_arr to the new_node
 
         int old_time_of_views = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getViews();
-        int new_time_of_views = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getViews() + time;
+        int new_time_of_views = old_time_of_views + time;
         _general_courses_tree.getElementptr(courseID)->getClasses()[classID].setViews(new_time_of_views);
 
         ListNode* curr_views_node = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getListOfViews();
         //remove the old
-        AvlTree<AvlTree<int,int>,int>& curr_node_tree = curr_views_node->getViewsCoursesTree();
-        curr_node_tree.getElementptr(courseID)->remove(classID);
-        if(curr_node_tree.getElementptr(courseID)->getFirst() == nullptr){
-            curr_node_tree.remove(courseID);
+        AvlTree<AvlTree<int,int>,int>* curr_node_tree = &(curr_views_node->getViewsCoursesTree());
+        curr_node_tree->getElementptr(courseID)->remove(classID);
+        if(curr_node_tree->getElementptr(courseID)->getFirst() == nullptr){
+            curr_node_tree->remove(courseID);
         }
-        if(curr_node_tree.getFirst() == nullptr && curr_views_node != general_views_list.getListsFirstNode()){
+        if(curr_node_tree->getFirst() == nullptr && (curr_views_node != general_views_list.getListsFirstNode())){
             ListNode* old_views_node = curr_views_node;
             curr_views_node = curr_views_node->getNextNode();
             general_views_list.removeListNode(old_views_node);
         }
         // add the new
-        while(curr_views_node->getTimeOfViews() <= new_time_of_views){
+        while((curr_views_node->getNextNode() != nullptr) &&
+        (curr_views_node->getNextNode()->getTimeOfViews() <= new_time_of_views)){
             curr_views_node = curr_views_node->getNextNode();
         }
-        if(curr_views_node->getTimeOfViews() > new_time_of_views){
-            AvlTree<AvlTree<int, int>, int> &new_node_tree = *(new AvlTree<AvlTree<int, int>, int>()); //check if "new" and "*" is actually needed
-            general_views_list.insertListNode(curr_views_node,new_node_tree,new_time_of_views);
+        if(curr_views_node == general_views_list.getListsLastNode() ||
+        curr_views_node->getNextNode()->getTimeOfViews() > new_time_of_views){
+            AvlTree<AvlTree<int, int>, int>* new_node_tree = new AvlTree<AvlTree<int, int>, int>(); //check if "new" and "*" is actually needed
+            //ListNode* list_node_to_insert = new ListNode(new_time_of_views,*new_node_tree);
+            general_views_list.insertListNode(curr_views_node,*new_node_tree,new_time_of_views);
             curr_views_node = curr_views_node->getNextNode();
         }
-        curr_node_tree = curr_views_node->getViewsCoursesTree();
-        if(curr_node_tree.getElementptr(courseID) == nullptr){ // create a new node for the course if doesnt exist
-            AvlTree<int,int> new_classes_tree_for_course; // maybe use cctor?
-            curr_node_tree.insert(new_classes_tree_for_course,courseID);
+        curr_node_tree = &(curr_views_node->getViewsCoursesTree());
+        if(curr_node_tree->getElementptr(courseID) == nullptr){ // create a new node for the course if doesnt exist
+            AvlTree<int,int>* new_classes_tree_for_course = new AvlTree<int,int>; // maybe use cctor?
+            curr_node_tree->insert(*new_classes_tree_for_course,courseID);
         }
         // there should be no chance of an exact classes node (int), so we dont check it
-        curr_node_tree.getElementptr(courseID)->insert(classID,classID);
+        curr_node_tree->getElementptr(courseID)->insert(classID,classID);
 
         // adjust the class object - set views + pointer
         _general_courses_tree.getElementptr(courseID)->getClasses()[classID].setViews(new_time_of_views);
@@ -166,13 +214,16 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
 
 CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
     try{
-        if(courseID <= 0 || classID < 0 ||
-                classID > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+        if(courseID <= 0 || classID < 0){
             return CM_INVALID_INPUT;
         }
         if(_general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
         }
+        if(classID > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+            return CM_INVALID_INPUT;
+        }
+
         *timeViewed = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getViews();
             //check if it is ok to fetch the classes array like this
         return CM_SUCCESS;
@@ -186,7 +237,7 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
         if(numOfClasses <= 0){
             return CM_INVALID_INPUT;
         }
-        if(num_of_courses < numOfClasses){
+        if(num_of_classes < numOfClasses){
             return CM_FAILURE;
         }
 
@@ -199,17 +250,22 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
             // if last course, go to prev node in list
 
         int counter = 0;
-        ListNode* curr_views_node = general_views_list.getListsFirstNode();
-        AvlTree<int,int>* curr_course = curr_views_node->getViewsCoursesTree().getFirst();
-        int* curr_song = curr_course->getFirst();
+        ListNode* curr_views_node = general_views_list.getListsLastNode();
+        AvlTree<int,int>* curr_course;
+        int* curr_class;
 
-        while(counter < numOfClasses){
-            while(counter < numOfClasses && (curr_course != nullptr)){
-                while(counter < numOfClasses && curr_song != nullptr){
-                    courses[counter] = curr_course->getKey();
-                    classes[counter] = *curr_song;
+        while(counter < numOfClasses && curr_views_node->getViewsCoursesTree().getFirst() != nullptr){
+            curr_course = curr_views_node->getViewsCoursesTree().getFirst();
+            curr_class = curr_course->getFirst();
+            while(counter < numOfClasses){
+                int curr_course_id = curr_views_node->getViewsCoursesTree().getKey();
+                int curr_class_id = curr_views_node->getViewsCoursesTree().getElementptr(curr_course_id)->getKey();
+                while((counter < numOfClasses) && (curr_course->getFirst() != nullptr)){
+                    courses[counter] = curr_course_id;
+                    classes[counter] = curr_class_id;
                     counter++;
-                    curr_song = curr_course->getNext();
+                    //curr_class = curr_course->getNext();
+                    curr_class_id = *(curr_course->getNext())/*curr_class*/;
                 }
                 // am i doing it correctly?
                 curr_course = curr_views_node->getViewsCoursesTree().getNext();
@@ -222,11 +278,12 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
     }
 }
 
+/* WHAT WAS THIS FOR?
 AvlTree<Course,int>* CoursesManager::getGeneralCoursesTree(){
     AvlTree<Course,int>* p = &_general_courses_tree;//is it ok????
     return p;
 }
-
+*/
 
 
 
