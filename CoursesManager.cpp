@@ -16,6 +16,14 @@
 // adds to general tree, views tree and to sum 0 in general list sums
 // SHOULD USE GETTERS INSTEAD OF FECTHING PRIVATE FIELDS
  */
+
+    /***
+    * Adds a course to the system- adds to the general tree of courses
+     * connects to the sum "0" tree connected to the node in list of views and classes to the tree under the course
+     * @param courseID,numOfClasses - the course ID and number of classes to add
+    * @return result
+    */
+
 CMResult CoursesManager::AddCourse(int courseID, int numOfClasses){
     try{
         if(courseID <= 0 || numOfClasses <= 0){
@@ -28,6 +36,7 @@ CMResult CoursesManager::AddCourse(int courseID, int numOfClasses){
         // create course and insert it to the general courses tree
         Course* course_to_add = new Course(courseID, numOfClasses);
         _general_courses_tree.insert(*course_to_add, courseID);
+        delete course_to_add;
         // all classes will now point to 0 views in views_list
         for(int i = 0; i < numOfClasses; i++){
             _general_courses_tree.getElementptr(courseID)->getClasses()[i].setListOfViews(general_views_list.getListsFirstNode());
@@ -182,16 +191,22 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         (curr_views_node->getNextNode()->getTimeOfViews() <= new_time_of_views)){
             curr_views_node = curr_views_node->getNextNode();
         }
+
         if(curr_views_node->getTimeOfViews() < new_time_of_views){
-            AvlTree<AvlTree<int, int>, int>* new_node_tree = new AvlTree<AvlTree<int, int>, int>(); //check if "new" and "*" is actually needed
+             //check if "new" and "*" is actually needed
             //ListNode* list_node_to_insert = new ListNode(new_time_of_views,*new_node_tree);
+            AvlTree<AvlTree<int, int>, int>* new_node_tree = new AvlTree<AvlTree<int, int>, int>();
             general_views_list.insertListNode(curr_views_node,*new_node_tree,new_time_of_views);
             curr_views_node = curr_views_node->getNextNode();
+
         }
         curr_node_tree = &(curr_views_node->getViewsCoursesTree());
+
         if(curr_node_tree->getElementptr(courseID) == nullptr){ // create a new node for the course if doesnt exist
-            AvlTree<int,int> new_classes_tree_for_course = *(new AvlTree<int,int>); // maybe use cctor?
-            curr_node_tree->insert(new_classes_tree_for_course,courseID);
+
+            AvlTree<int,int> *new_classes_tree_for_course = (new AvlTree<int,int>);  // maybe use cctor?
+            curr_node_tree->insert(*new_classes_tree_for_course,courseID);
+            delete new_classes_tree_for_course;
         }
         // there should be no chance of an exact classes node (int), so we dont check it
         curr_node_tree->getElementptr(courseID)->insert(classID,classID);
@@ -216,17 +231,22 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
     } catch(...){
         return CM_ALLOCATION_ERROR;
     }
+
+
+    return CM_SUCCESS;
 }
 
 CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
     try{
-        if(courseID <= 0 || classID < 0){
+        if(courseID <= 0 || classID < 0 ){
             return CM_INVALID_INPUT;
         }
+
         if(_general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
         }
-        if(classID > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+
+        if(classID+1 > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
 
@@ -283,22 +303,15 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
     }
 }
 
-/* WHAT WAS THIS FOR?
-AvlTree<Course,int>* CoursesManager::getGeneralCoursesTree(){
-    AvlTree<Course,int>* p = &_general_courses_tree;//is it ok????
+ //WHAT WAS THIS FOR?
+List* CoursesManager::getGeneralListOfViews(){
+    List* p = &general_views_list;
     return p;
 }
-*/
-
-
-
-
-
-
-
-
-
-
+AvlTree<Course,int>* CoursesManager::getGeneralTreeOfCourses(){
+    AvlTree<Course,int>* p = &_general_courses_tree;
+    return p;
+}
 
 /*
 //helper func to link to the general list of views, not specifically for addCourse

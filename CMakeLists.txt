@@ -3,6 +3,7 @@ project(DS1_2020_Wet1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+
 include_directories(.)
 
 add_executable(DS1_2020_Wet1

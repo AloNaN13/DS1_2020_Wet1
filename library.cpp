@@ -59,7 +59,21 @@ StatusType GetMostViewedClasses(void *DS, int numOfClasses, int *courses, int *c
 }
 
 void Quit(void** DS){
+  /*
+    ListNode* curr = ((CoursesManager*)DS)->getGeneralListOfViews()->getListsFirstNode();
+    if(curr!= nullptr){
+        ListNode* next = curr->getNextNode();
+        while(next!= nullptr){
+            ((CoursesManager*)DS)->getGeneralListOfViews()->removeListNode(curr);
+            curr = next;
+            next = curr->getNextNode();
+        }
+    }
+    delete curr;
+    delete (((CoursesManager*)DS)->getGeneralListOfViews());
+    **/
     delete((CoursesManager*)(*DS));
+
     *DS = nullptr;
     return;
 }

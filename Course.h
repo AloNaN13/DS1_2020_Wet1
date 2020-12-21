@@ -5,7 +5,11 @@
 #include <iostream>
 #include "MyClass.h"
 #include "List.h"
-
+/***
+* STRUCT FOR THE COURSE OBJECT
+* @var _id, _p, _tot_views, _num_of_classes : the course ID, classes array, total course views, number of classes
+* using getters and setters
+*/
 using std::string;
 using std::ostream;
 
@@ -20,7 +24,9 @@ public:
     //Course() = default;
     //Course(const int id, MyClass* p,int tot_views,int num_of_classes);
     Course(const int id, /*MyClass* p,*/int num_of_classes);
-    ~Course() = default;
+    ~Course() {
+        delete [] _p;
+    };
     Course(const Course &course);
     int getId();
     MyClass* getClasses();
