@@ -24,7 +24,9 @@ public:
     //Course() = default;
     //Course(const int id, MyClass* p,int tot_views,int num_of_classes);
     Course(const int id, /*MyClass* p,*/int num_of_classes);
-    ~Course() = default;
+    ~Course() {
+        delete [] _p;
+    };
     Course(const Course &course);
     int getId();
     MyClass* getClasses();

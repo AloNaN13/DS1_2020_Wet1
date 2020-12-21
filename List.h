@@ -2,11 +2,11 @@
 #ifndef DS1_2020_WET1_LIST_H
 #define DS1_2020_WET1_LIST_H
 
-#include "AVLTree.h"
+#include "AvlTree.h"
 /***
 * !!NOT A GENERIC LIST!!
  * each node represents sum of views
- * the list holds an AVL tree of courses IDs and AVLtrees of classes, the classes must have the nodes "sum" of views per course
+ * the list holds an AVL tree of courses IDs and AvlTrees of classes, the classes must have the nodes "sum" of views per course
  * a two sided list!
 */
 

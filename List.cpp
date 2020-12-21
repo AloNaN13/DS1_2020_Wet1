@@ -16,7 +16,7 @@ List::~List(){
 
 // insert a node after the curr_node given as a parameter
 // need to check if the node exists?
-// check if indeed inside avlTree in <int,int>
+// check if indeed inside AvlTree in <int,int>
 ListResult List::insertListNode(ListNode *curr_node,
                                 AvlTree<AvlTree<int, int>, int> &views_courses,
                                 int time_of_views) {
@@ -34,7 +34,7 @@ ListResult List::insertListNode(ListNode *curr_node,
 }
 
 // need to check if the node exists?
-// check if indeed inside avlTree in <int,int>
+// check if indeed inside AvlTree in <int,int>
 ListResult List::removeListNode(ListNode *node) {
     // we never try to erase the first_node if it's not quit? - deal with it?
     if(node != first_node){

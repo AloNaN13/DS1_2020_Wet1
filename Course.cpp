@@ -29,8 +29,9 @@ Course::Course(const int id, /*MyClass* p,*/int num_of_classes):
     _p = new MyClass[num_of_classes];
     for(int i = 0; i < num_of_classes; i++){
         //check the "new" here - if needed someplace else also
-        MyClass my_class = *(new MyClass(i,id));
-        _p[i] = my_class;
+        MyClass *my_class = (new MyClass(i,id));
+        _p[i] = *my_class;
+        delete my_class;
     }
 };
 

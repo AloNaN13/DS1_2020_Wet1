@@ -83,6 +83,9 @@ public:
   //  AvlTree<Course,int>* getGeneralCoursesTree();
     // implement the quit in library - using delete
 
+    List* getGeneralListOfViews();
+    AvlTree<Course,int>* getGeneralTreeOfCourses();
+
 };
 
 
