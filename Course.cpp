@@ -26,11 +26,11 @@ Course::Course(const int id, MyClass* p,int tot_views,int num_of_classes): _id(i
 
 Course::Course(const int id, /*MyClass* p,*/int num_of_classes):
         _id(id), /*_p(p), */_tot_views(0), _num_of_classes(num_of_classes) {
-    _p = new MyClass[num_of_classes];
+    _classes_array = new MyClass[num_of_classes];
     for(int i = 0; i < num_of_classes; i++){
         //check the "new" here - if needed someplace else also
         MyClass *my_class = (new MyClass(i,id));
-        _p[i] = *my_class;
+        _classes_array[i] = *my_class;
         delete my_class;
     }
 };
@@ -39,9 +39,9 @@ Course::Course(const int id, /*MyClass* p,*/int num_of_classes):
 Course::Course(const Course& course):
         _id(course._id), _tot_views(course._tot_views),
         _num_of_classes(course._num_of_classes) {
-    _p = new MyClass[course._num_of_classes];
+    _classes_array = new MyClass[course._num_of_classes];
     for(int i = 0; i < course._num_of_classes; i++){
-        this->_p[i] = course._p[i];
+        this->_classes_array[i] = course._classes_array[i];
     }
 }
 
@@ -50,7 +50,7 @@ int Course::getId(){
 }
 
 MyClass* Course::getClasses(){
-    return _p;
+    return _classes_array;
 }
 
 int Course::getNumOfClasses(){
@@ -61,7 +61,7 @@ void Course::setId(int i){
     _id = i;
 }
 void Course::setClasses(MyClass *p){
-    _p = p;
+    _classes_array = p;
 }
 int Course::getTotViews() {
     return _tot_views;

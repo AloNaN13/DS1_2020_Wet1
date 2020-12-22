@@ -1,10 +1,10 @@
 
 #include "CoursesManager.h"
-#include "Course.h"
-#include "Views.h"
-#include "MyClass.h"
-#include "AvlTree.h"
-#include "List.h"
+//#include "Course.h"
+//#include "Views.h"
+//#include "MyClass.h"
+//#include "AvlTree.h"
+//#include "List.h"
 
 // ERASE - Just because there is no init
 //List general_list_of_views = List();
@@ -76,15 +76,19 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
             //get the relevant node in the views list
             ListNode* list_node_to_remove_from = course_to_remove->getClasses()[i].getListOfViews();
             //get the tree that represents the course's classes with this num of views
+            if(list_node_to_remove_from == nullptr ||
+            !list_node_to_remove_from->getViewsCoursesTree().findKeyAlreadyExists(courseID)){
+                continue;
+            }
             AvlTree<int,int>* views_course_tree_to_remove = list_node_to_remove_from->getViewsCoursesTree().getElementptr(courseID);
             //remove all of the nodes in that tree - all of the courses classes with the num of views
             if(views_course_tree_to_remove == nullptr){
                 continue;
             }
             int* class_to_remove = views_course_tree_to_remove->getFirst();
-            while(views_course_tree_to_remove->getNumNodes() > 0){
+            while(class_to_remove != nullptr){
                 int* next_node_to_remove = views_course_tree_to_remove->getNext();
-                views_course_tree_to_remove->remove(*class_to_remove);
+                course_to_remove->getClasses()[*class_to_remove].setListOfViews(nullptr);
                 class_to_remove = next_node_to_remove;
             }
             //remove the courses node in the from the tree
@@ -151,7 +155,7 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         if(_general_courses_tree.getElementptr(courseID) == nullptr){
             return CM_FAILURE;
         }
-        if(classID /*+ 1 */> _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+        if(classID + 1> _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
 
@@ -171,7 +175,6 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         int old_time_of_views = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getViews();
         int new_time_of_views = old_time_of_views + time;
         _general_courses_tree.getElementptr(courseID)->getClasses()[classID].setViews(new_time_of_views);
-
         ListNode* curr_views_node = _general_courses_tree.getElementptr(courseID)->getClasses()[classID].getListOfViews();
 
         //remove the old time for class from the relevant course node in views_courses tree
@@ -182,7 +185,7 @@ CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
         }
         if(curr_node_tree->getFirst() == nullptr && (curr_views_node != general_views_list.getListsFirstNode())){
             ListNode* old_views_node = curr_views_node;
-            curr_views_node = curr_views_node->getNextNode();
+            curr_views_node = curr_views_node->getPrevNode();
             general_views_list.removeListNode(old_views_node);
         }
 
@@ -246,7 +249,7 @@ CMResult CoursesManager::TimeViewed(int courseID, int classID, int *timeViewed){
             return CM_FAILURE;
         }
 
-        if(classID+1 > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
+        if(classID + 1 > _general_courses_tree.getElementptr(courseID)->getNumOfClasses()){
             return CM_INVALID_INPUT;
         }
 
@@ -302,6 +305,21 @@ CMResult CoursesManager::GetMostViewedClasses(int numOfClasses, int *courses, in
         return CM_ALLOCATION_ERROR;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  //WHAT WAS THIS FOR?
 List* CoursesManager::getGeneralListOfViews(){

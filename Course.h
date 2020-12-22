@@ -7,7 +7,7 @@
 #include "List.h"
 /***
 * STRUCT FOR THE COURSE OBJECT
-* @var _id, _p, _tot_views, _num_of_classes : the course ID, classes array, total course views, number of classes
+* @var _id, _classes_array, _tot_views, _num_of_classes : the course ID, classes array, total course views, number of classes
 * using getters and setters
 */
 using std::string;
@@ -16,7 +16,7 @@ using std::ostream;
 class Course{
 private:
     int _id;
-    MyClass* _p;
+    MyClass* _classes_array;
     int _tot_views;
     int _num_of_classes;
 
@@ -25,7 +25,7 @@ public:
     //Course(const int id, MyClass* p,int tot_views,int num_of_classes);
     Course(const int id, /*MyClass* p,*/int num_of_classes);
     ~Course() {
-        delete [] _p;
+        delete [] _classes_array;
     };
     Course(const Course &course);
     int getId();

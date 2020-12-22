@@ -41,6 +41,45 @@ int main(){
 
 
 
+
+
+
+
+
+
+    CoursesManager manager=*new CoursesManager();
+    manager.AddCourse(17,26);
+    manager.AddCourse(14,26);
+    manager.RemoveCourse(14);
+    manager.AddCourse(14,26);
+    manager.WatchClass(14,0,16);
+    manager.WatchClass(17,0,31);
+    manager.WatchClass(14,0,14);
+    manager.WatchClass(14,0,4);
+    manager.WatchClass(14,0,9);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     CoursesManager manager=*new CoursesManager();
     manager.AddCourse(1,5);
     manager.AddCourse(1,6);
@@ -76,7 +115,7 @@ int main(){
 
     printf("hello\n");
 
-
+*/
     return 0;
 }
 
