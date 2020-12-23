@@ -1,7 +1,14 @@
 
+/****************************************************************************/
+/*                                                                          */
+/* This file contains the generic Avl Tree we use in the assignment         */
+/*                                                                          */
+/*                                                                          */
+/****************************************************************************/
+
+
 #ifndef DS1_WET1_AVLTREE_H
 #define DS1_WET1_AVLTREE_H
-
 
 #include <cmath>
 #include <iostream>
@@ -18,7 +25,7 @@ typedef enum AvlTreeResult_t{
 template<class Element,class Key>
 class AvlTree {
 private:
-    class Node{
+    class Node{ //the tree node, implemented to be general
     public:
         Element& data;
         const Key& key;

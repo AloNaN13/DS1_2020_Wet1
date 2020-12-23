@@ -1,17 +1,15 @@
 
+/****************************************************************************/
+/*  !!NOT A GENERIC LIST!!                                                  */
+/* each node represents sum of views                                        */
+/* he list holds an AVL tree of courses IDs and AvlTrees of classes,        */
+/*   the classes must have the nodes "sum" of views per course              */
+/*  a two sided list!                                                       */
+/****************************************************************************/
 #ifndef DS1_WET1_LIST_H
 #define DS1_WET1_LIST_H
 
 #include "AvlTree.h"
-
-
-/***
-* !!NOT A GENERIC LIST!!
- * each node represents sum of views
- * the list holds an AVL tree of courses IDs and AvlTrees of classes, the classes must have the nodes "sum" of views per course
- * a two sided list!
-*/
-
 typedef enum ListResult_t{
     LIST_SUCCESS,
     LIST_ALLOCATION_ERROR,
@@ -25,30 +23,58 @@ typedef enum ListResult_t{
 
 class ListNode{
 private:
-    const int time_of_views;
-    AvlTree<AvlTree<int,int>,int>& views_courses; // reference? should be <int,int>*?
-    ListNode* prev_node;
-    ListNode* next_node;
+    const int time_of_views; //the relevant number of views that the node represents
+    AvlTree<AvlTree<int,int>,int>& views_courses; // tree of courses containing classes of the _time_of_views sum
+    ListNode* prev_node; //pointer to previous node
+    ListNode* next_node; //pointer to next node
 public:
-        /***
+    /***
     * List node usual functions of ctor , dtor , cctor, managing nodes
     */
+
+    /**
+     * constructor for node without a tree
+     * @param time_of_views
+     */
     explicit ListNode(int time_of_views): time_of_views(time_of_views),
                                 views_courses(*(new AvlTree<AvlTree<int,int>,int>())),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
+    /**
+     * constructor of node with tree to be asserted under
+     * @param time_of_views
+     * @param views_courses
+     */
     ListNode(int time_of_views, AvlTree<AvlTree<int,int>,int>& views_courses): time_of_views(time_of_views),
                                 views_courses(views_courses),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
+    /**
+     * destructor
+     */
     ~ListNode() {delete(&views_courses);};
-    //ListNode(const ListNode& node) = default;
-    //ListNode& operator=(const ListNode& node) = default;
 
     // setters+getters
+
+    /**
+     *
+     * @return previous node to the current one
+     */
     ListNode* getPrevNode() {return this->prev_node;};
+    /**
+     *
+     * @return next node to current one
+     */
     ListNode* getNextNode() {return this->next_node;};
+    /**
+     * set new pointer to previous node
+     * @param new_prev_node
+     */
     void setPrevNode(ListNode* new_prev_node) {this->prev_node = new_prev_node;};
+    /**
+     * srt new pointer to next node
+     * @param new_next_node
+     */
     void setNextNode(ListNode* new_next_node) {this->next_node = new_next_node;};
 
     // other functions
@@ -66,7 +92,7 @@ private:
     ListNode* first_node;
     ListNode* last_node;
 public:
-        /***
+    /***
     * List usual functions of ctor , dtor , cctor, managing nodes
     */
     List(): first_node(new ListNode(0)),

@@ -19,11 +19,13 @@ typedef enum CMResult_t{
 
 class CoursesManager {
 private:
-    AvlTree<Course,int> _general_courses_tree;
-    List general_views_list;
-    int num_of_classes;
+    AvlTree<Course,int> _general_courses_tree; //the general tree of all courses in the system
+    List general_views_list; //the list that represents the views of different classes
+    int num_of_classes; //number of total classes
 public:
-    //ctor+dtor+ccot+assignop
+    /**
+     * ctor+dtor+ccot+assignop
+     */
     CoursesManager(): num_of_classes(0) {}; // need to implement it more explicitly?
     ~CoursesManager() = default;
     CoursesManager(const CoursesManager& courses_manager) = default;
