@@ -27,16 +27,16 @@ private:
         Node* parent;
         int hl;
         int hr;
-/**
- * constractor of the node
- * @param data
- * @param key
- */
+        /**
+         * constractor of the node
+         * @param data
+         * @param key
+         */
         Node(const Element& data,const Key& key):data(*(new Element(data))),key(*(new Key(key))),right_son(nullptr)
                 ,left_son(nullptr),parent(nullptr),hl(0),hr(0){};
-/**
- * destructor of the node
- */
+        /**
+         * destructor of the node
+         */
         ~Node(){
             delete &data;
             delete &key;
@@ -57,17 +57,21 @@ private:
          * @return the relevant int
          */
         int getBalanceFactor();
-/**
- * get a nodes parent
- * @return the parent node
- */
+        /**
+         * get a nodes parent
+         * @return the parent node
+         */
         Node* getParent(){ return parent;};
         /**
-         *
+         *get the node related to the key
          * @param key
-         * @return
+         * @return node
          */
         Node& getNodeFromKey(const Key key);
+        /**
+         * finds the next node related to the iterator
+         * @return
+         */
         Node* FindNext();
     };
 
@@ -75,20 +79,26 @@ private:
     Node* iterator;
     Node* first;
     int numOfNodes;
-    void swapNodes(Node *node_to_del,Node* next_by_value);
-
-    Node* removeBinarySearch(Node* node_to_del);
+    /**
+     * private functions related to the impelentation of the tree
+     */
+    Node* buildTreeFromArrays(Element* arrElement, Key* arrKey, int len );
     void InsertNode(Node &newNode);
+    void swapNodes(Node *node_to_del,Node* next_by_value);
+    Node* removeBinarySearch(Node* node_to_del);
     void deleteAllNodes(Node* node);
-    void BalanceInsert(Node& insertedNode);
-    void BalanceRemove(Node* node);
     void rotateLeft(Node& node);
     void rotateRight(Node& node);
+    void BalanceInsert(Node& insertedNode);
+    void BalanceRemove(Node* node);
     void fixHeightAfterInsert(Node& inserted_node);
     void fixHeightAfterRemove(Node* parent_of_removed);
     void fixHeightAfterRotation(Node* rotated_node);
-    Node* buildTreeFromArrays(Element* arrElement, Key* arrKey, int len );
     static Node* copyNodes(Node* current,const Node* Node_to_copy);
+
+    /**
+     * public function of the tree
+     */
 public:
     /**
      * ctor of the tree
@@ -162,20 +172,17 @@ public:
      * @return number of nodes in the tree
      */
     int getNumNodes() const { return numOfNodes;}
-
-    //newt 2 functions for testing
-    void clear(){
-        if (root != nullptr) {
-            deleteAllNodes(root);
-        }
-        root= nullptr;
-        first= nullptr;
-        iterator= nullptr;
-    }
-    void printTreeInOrder(Node* startingNode);
+    /**
+     * get the root tree
+     * @return node of the root
+     */
     const Node* getRoot() const { return  root;}
 
 };
+
+/**
+ * implementations
+ */
 
 template <class Element,class Key>
 AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullptr),first(nullptr),numOfNodes(0){
@@ -185,17 +192,20 @@ AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullp
         first=first->left_son;
     }
     this->numOfNodes=other.getNumNodes();
-    //root=new Node(other_root->data,other_root->key);
 }
 
-/**
- * function for copying nodes to a tree
- * @tparam Element
- * @tparam Key
- * @param current
- * @param Node_to_copy
- * @return
- */
+template <class Element,class Key>
+AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nullptr)
+        ,iterator(nullptr),first(nullptr){
+    root=buildTreeFromArrays(arrElement,arrKey,num);
+    first=root;
+    while(first && first->left_son){
+        first=first->left_son;
+    }
+    numOfNodes = num;
+}
+
+
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* current,const Node *Node_to_copy) {
     if(!Node_to_copy){
@@ -217,16 +227,6 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* curre
 
 
 
-template <class Element,class Key>
-AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nullptr)
-        ,iterator(nullptr),first(nullptr){
-    root=buildTreeFromArrays(arrElement,arrKey,num);
-    first=root;
-    while(first && first->left_son){
-        first=first->left_son;
-    }
-    numOfNodes = num;
-}
 
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::
@@ -252,6 +252,36 @@ buildTreeFromArrays (Element* arrElement, Key* arrKey, int len ){
         currentNode->hl=0;
     }
     return currentNode;
+}
+
+
+template <class Element,class Key>
+AvlTree<Element,Key>::~AvlTree(){
+    if(root){
+        deleteAllNodes(root);
+    }
+    first= nullptr;
+    root= nullptr;
+    iterator= nullptr;
+}
+
+template <class Element,class Key>
+void AvlTree<Element,Key>::deleteAllNodes(Node *node) {
+    if(node){
+        deleteAllNodes((node->right_son));
+        deleteAllNodes((node->left_son));
+        delete(node);
+    }
+}
+
+
+template <class Element,class Key>
+Element* AvlTree<Element,Key>::getElementptr(const Key &key) {
+    if(!findKeyAlreadyExists(key)){
+        return nullptr;
+    }
+    Node& wanted=root->getNodeFromKey(key);
+    return &wanted.data;
 }
 
 template <class Element,class Key>
@@ -286,14 +316,7 @@ Element* AvlTree<Element,Key>::getNext() {
     return &iterator->data;
 }
 
-template <class Element,class Key>
-Element* AvlTree<Element,Key>::getElementptr(const Key &key) {
-    if(!findKeyAlreadyExists(key)){
-        return nullptr;
-    }
-    Node& wanted=root->getNodeFromKey(key);
-    return &wanted.data;
-}
+
 
 template <class Element,class Key>
 void AvlTree<Element,Key>:: fixHeightAfterInsert(Node& inserted_node){
@@ -413,24 +436,6 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::Node::FindNext() {
     return nextByOrder;
 }
 
-template <class Element,class Key>
-AvlTree<Element,Key>::~AvlTree(){
-    if(root){
-        deleteAllNodes(root);
-    }
-    first= nullptr;
-    root= nullptr;
-    iterator= nullptr;
-}
-
-template <class Element,class Key>
-void AvlTree<Element,Key>::deleteAllNodes(Node *node) {
-    if(node){
-        deleteAllNodes((node->right_son));
-        deleteAllNodes((node->left_son));
-        delete(node);
-    }
-}
 
 template <class Element,class Key>
 void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
@@ -614,14 +619,13 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::removeBinarySearch(No
         return parent;
     }
 
-    if(node_to_del->right_son== nullptr){//has only a left child
+    if(node_to_del->right_son== nullptr){
 
         if(parent->right_son==node_to_del){
             parent->right_son=node_to_del->left_son;
             node_to_del->left_son->parent=parent;
             delete node_to_del;
             fixHeightAfterRemove(parent);
-            //parent->hr=parent->hr-1;
             return parent;
         }
         parent->left_son=node_to_del->left_son;
@@ -630,10 +634,7 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::removeBinarySearch(No
         fixHeightAfterRemove(parent);
         return parent;
     }
-
-    // would not reach this
     return nullptr;
-
 }
 
 template <class Element,class Key>

@@ -4,7 +4,7 @@
 #include "List.h"
 
 
-Course::Course(const int id, /*MyClass* p,*/int num_of_classes): _id(id), _num_of_classes(num_of_classes) {
+Course::Course(const int id,int num_of_classes): _id(id), _num_of_classes(num_of_classes) {
     _classes_array = new MyClass[num_of_classes];
     for(int i = 0; i < num_of_classes; i++){
         MyClass *my_class = (new MyClass(i,id));
