@@ -1,20 +1,20 @@
 
-#ifndef MIVNE_AVLTREE_H
-#define MIVNE_AVLTREE_H
-
-//#define MAX(a, b) ((a > b) ? a : b)
+#ifndef DS1_WET1_AVLTREE_H
+#define DS1_WET1_AVLTREE_H
 
 #include <cmath>
 #include <iostream>
-#include <assert.h>
 
 using namespace std;
 
-typedef enum AvlTreeResult_t{AVL_KEY_ALREADY_EXISTS,AVL_SUCCESS,AVL_ALLOCATION_ERROR
-    ,AVL_KEY_DOESNT_EXISTS
+typedef enum AvlTreeResult_t{
+    AVL_TREE_SUCCESS,
+    AVL_TREE_ALLOCATION_ERROR,
+    AVL_TREE_KEY_ALREADY_EXISTS,
+    AVL_TREE_KEY_DOESNT_EXISTS
 }AvlTreeResult;
 
-template <class Element,class Key>
+template<class Element,class Key>
 class AvlTree {
 private:
     class Node{
@@ -153,12 +153,6 @@ public:
 
 };
 
-
-
-/***
- * The copy ctor of the Tree, creates a new tree that looks exactly the same as th other tree
- * @param other-the AvlTree that need to be copied
- */
 template <class Element,class Key>
 AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullptr),first(nullptr),numOfNodes(0){
     root=copyNodes(root,other.getRoot());
@@ -170,13 +164,6 @@ AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullp
     //root=new Node(other_root->data,other_root->key);
 }
 
-/***
- * a recursic helper fucntion, thats called from the copy ctor of the tree,
- * allocates new memory and copies all the nodes using recursion
- * @param current -The node we want to put in the arguments of Node_to_copy
- * @param Node_to_copy -The Node that we want to copy
- * @return -a pointer to current
- */
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* current,const Node *Node_to_copy) {
     if(!Node_to_copy){
@@ -196,15 +183,6 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* curre
     return current;
 }
 
-
-/***
- * constractor to the tree that creaets a new tree with num Nodes, with complesity O(num),
- * because it enters  the nodes to the tree in such order that balancing wont be
- * necessery(using buildTreeFromArrays func)
- * @param arrElement- sorted array of elements
- * @param arrKey- sorted array of keys
- * @param num - the length of the 2 arrays
- */
 template <class Element,class Key>
 AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nullptr)
         ,iterator(nullptr),first(nullptr){
@@ -216,15 +194,6 @@ AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nu
     numOfNodes = num;
 }
 
-/***
- * creates len nodes using recursion where in the node i there is element that equals to arrElement[i]
- * and the key equals to arrKey[i], the time complecity of the func is O(len),
- * than the first Node we created will be the root of the new tree we created in the constractor
- * that gets 3 arguments, balancing wont be necessery because we using the fact that the arrays are sorted.
- * @param arrElement- sorted array of elements
- * @param arrKey- sorted array of keys
- * @param len - the length of the 2 arrays
- */
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::
 buildTreeFromArrays (Element* arrElement, Key* arrKey, int len ){
@@ -251,11 +220,6 @@ buildTreeFromArrays (Element* arrElement, Key* arrKey, int len ){
     return currentNode;
 }
 
-/***
- * sets the iterator to the minimal node(by key) in the tree and returns a pointer
- * to his data
- * @return -pointer to the data of the minimal Node in the tree, null_ptr if the tree is empty
- */
 template <class Element,class Key>
 Element* AvlTree<Element,Key>::getFirst() {
     if(root== nullptr){
@@ -265,14 +229,6 @@ Element* AvlTree<Element,Key>::getFirst() {
     return &iterator->data;
 }
 
-
-/***
- * sess iterator to the next Node by order in the tree and returns its data, if
- * the iterator is already on the largest tree in the node, than it sets the iterator
- * to null_ptr
- * @return -the above if its possible, returns null_ptr if the iterator is null,
- * or if its in the largest Node in the tree,
- */
 template <class Element,class Key>
 Element* AvlTree<Element,Key>::getNext() {
     if(iterator== nullptr){
@@ -296,12 +252,6 @@ Element* AvlTree<Element,Key>::getNext() {
     return &iterator->data;
 }
 
-/***
- *
- * @param key- the key of the data we want to get
- * @return - a pointer to the element of the node with Key of the key we get,
- * null_ptr if such dose'nt exicts
- */
 template <class Element,class Key>
 Element* AvlTree<Element,Key>::getElementptr(const Key &key) {
     if(!findKeyAlreadyExists(key)){
@@ -398,7 +348,6 @@ int AvlTree<Element,Key>::Node::getBalanceFactor() {
     return left_son->getHeight()-right_son->getHeight();
 }
 
-//caleed only if we are sure there is a node
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node&  AvlTree<Element,Key>::Node::getNodeFromKey(const Key key){
     Node* tmp=this;
@@ -414,7 +363,7 @@ typename AvlTree<Element,Key>::Node&  AvlTree<Element,Key>::Node::getNodeFromKey
         }
     }
 
-    // does not reach here - only for the compiler's warning
+    // would never reach this
     return *tmp;
 }
 
@@ -429,9 +378,7 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::Node::FindNext() {
     }
     return nextByOrder;
 }
-/***
- * the destractor of the tree, first deletes all the nodes so there won't be memoryLeak
- */
+
 template <class Element,class Key>
 AvlTree<Element,Key>::~AvlTree(){
     if(root){
@@ -441,10 +388,7 @@ AvlTree<Element,Key>::~AvlTree(){
     root= nullptr;
     iterator= nullptr;
 }
-/***
- * deletes all the nodes of the tree using postOrder algo,
- * @param node -the node we want to delete
- */
+
 template <class Element,class Key>
 void AvlTree<Element,Key>::deleteAllNodes(Node *node) {
     if(node){
@@ -453,7 +397,6 @@ void AvlTree<Element,Key>::deleteAllNodes(Node *node) {
         delete(node);
     }
 }
-
 
 template <class Element,class Key>
 void AvlTree<Element,Key>::rotateLeft(AvlTree<Element, Key>::Node &node) {
@@ -581,7 +524,6 @@ void AvlTree<Element,Key>::InsertNode(Node &newNode){
     }
 }
 
-//deletes the node and returns a pointer to the father, null is such doesnt exists
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::removeBinarySearch(Node* node_to_del) {
 
@@ -655,12 +597,11 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::removeBinarySearch(No
         return parent;
     }
 
-    // does not reach here - only for the compiler's warning
+    // would not reach this
     return nullptr;
 
 }
 
-//we call the swap during just the removal
 template <class Element,class Key>
 void AvlTree<Element,Key>::swapNodes(Node* node_to_del,Node* next_by_value) {
     if(node_to_del==next_by_value){
@@ -763,12 +704,6 @@ void AvlTree<Element,Key>:: BalanceInsert(Node& insertedNode){
     }
 }
 
-
-
-
-
-//now its the functions of the tree
-
 template <class Element,class Key>
 bool AvlTree<Element,Key>::findKeyAlreadyExists(const Key& key){
     if(root== nullptr){
@@ -793,7 +728,7 @@ bool AvlTree<Element,Key>::findKeyAlreadyExists(const Key& key){
 template <class Element,class Key>
 AvlTreeResult AvlTree<Element,Key>::insert(const Element &ele, const Key& key) {
     if(findKeyAlreadyExists(key)){
-        return  AVL_KEY_ALREADY_EXISTS;
+        return  AVL_TREE_KEY_ALREADY_EXISTS;
     }
     Node* ptr=new Node(ele,key);
     if(root== nullptr){
@@ -805,33 +740,32 @@ AvlTreeResult AvlTree<Element,Key>::insert(const Element &ele, const Key& key) {
         root->hl=0;
         first=root;
         numOfNodes++;
-        return AVL_SUCCESS;
+        return AVL_TREE_SUCCESS;
     }
     InsertNode(*ptr);
     if(key<first->key){
         first=ptr;
     }
     numOfNodes++;
-    return AVL_SUCCESS;
+    return AVL_TREE_SUCCESS;
 }
 
 template <class Element,class Key>
 AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
 
     if(!findKeyAlreadyExists(key)){
-        return  AVL_KEY_DOESNT_EXISTS;
+        return  AVL_TREE_KEY_DOESNT_EXISTS;
     }
     Node& node_to_del=root->getNodeFromKey(key);
     bool setFirst=(&node_to_del==first);
     Node* parent=removeBinarySearch(&node_to_del);
-    // assert(findKeyAlreadyExists(key)== false);
 
     if(parent== nullptr){
         root= nullptr;
         first= nullptr;
         iterator= nullptr;
         numOfNodes--;
-        return AVL_SUCCESS;
+        return AVL_TREE_SUCCESS;
     }
 
     while (parent!= nullptr){
@@ -854,7 +788,7 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
 
     if(setFirst){
         if(root== nullptr){
-            return AVL_SUCCESS;
+            return AVL_TREE_SUCCESS;
         }
         first=root;
 
@@ -863,7 +797,7 @@ AvlTreeResult AvlTree<Element,Key>:: remove (const Key& key){
         }
     }
     numOfNodes--;
-    return AVL_SUCCESS;
+    return AVL_TREE_SUCCESS;
 }
 
 template <class Element,class Key>
@@ -894,4 +828,5 @@ void AvlTree<Element,Key>::BalanceRemove(Node *node) {
     }
 }
 
-#endif //MIVNE_AVLTREE_H
+
+#endif //DS1_WET1_AVLTREE_H

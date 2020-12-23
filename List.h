@@ -1,6 +1,6 @@
 
-#ifndef DS1_2020_WET1_LIST_H
-#define DS1_2020_WET1_LIST_H
+#ifndef DS1_WET1_LIST_H
+#define DS1_WET1_LIST_H
 
 #include "AvlTree.h"
 
@@ -91,4 +91,4 @@ public:
 };
 
 
-#endif //DS1_2020_WET1_LIST_H
+#endif //DS1_WET1_LIST_H
