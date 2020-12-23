@@ -231,33 +231,6 @@ MyClass.cpp.s:
 	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/MyClass.cpp.s
 .PHONY : MyClass.cpp.s
 
-Views.o: Views.cpp.o
-
-.PHONY : Views.o
-
-# target to build an object file
-Views.cpp.o:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.o
-.PHONY : Views.cpp.o
-
-Views.i: Views.cpp.i
-
-.PHONY : Views.i
-
-# target to preprocess a source file
-Views.cpp.i:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.i
-.PHONY : Views.cpp.i
-
-Views.s: Views.cpp.s
-
-.PHONY : Views.s
-
-# target to generate assembly for a file
-Views.cpp.s:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/Views.cpp.s
-.PHONY : Views.cpp.s
-
 library.o: library.cpp.o
 
 .PHONY : library.o
@@ -285,32 +258,32 @@ library.cpp.s:
 	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/library.cpp.s
 .PHONY : library.cpp.s
 
-main.o: main.cpp.o
+main1.o: main1.cpp.o
 
-.PHONY : main.o
+.PHONY : main1.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.o
-.PHONY : main.cpp.o
+main1.cpp.o:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.o
+.PHONY : main1.cpp.o
 
-main.i: main.cpp.i
+main1.i: main1.cpp.i
 
-.PHONY : main.i
+.PHONY : main1.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.i
-.PHONY : main.cpp.i
+main1.cpp.i:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.i
+.PHONY : main1.cpp.i
 
-main.s: main.cpp.s
+main1.s: main1.cpp.s
 
-.PHONY : main.s
+.PHONY : main1.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main.cpp.s
-.PHONY : main.cpp.s
+main1.cpp.s:
+	$(MAKE) -f CMakeFiles/DS1_2020_Wet1.dir/build.make CMakeFiles/DS1_2020_Wet1.dir/main1.cpp.s
+.PHONY : main1.cpp.s
 
 # Help Target
 help:
@@ -333,15 +306,12 @@ help:
 	@echo "... MyClass.o"
 	@echo "... MyClass.i"
 	@echo "... MyClass.s"
-	@echo "... Views.o"
-	@echo "... Views.i"
-	@echo "... Views.s"
 	@echo "... library.o"
 	@echo "... library.i"
 	@echo "... library.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... main1.o"
+	@echo "... main1.i"
+	@echo "... main1.s"
 .PHONY : help
 
 

@@ -18,9 +18,8 @@ add_executable(DS1_2020_Wet1
         library.h
         List.cpp
         List.h
-        main.cpp
-        #main1.cpp
+        #main.cpp
+        main1.cpp
         MyClass.cpp
         MyClass.h
-        Views.cpp
-        Views.h)
+        )

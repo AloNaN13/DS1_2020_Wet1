@@ -1,6 +1,3 @@
-//
-// Created by svet on 12/3/2020.
-//
 
 #ifndef DATA_STRUCTS_1_COURSESMANAGER_H
 #define DATA_STRUCTS_1_COURSESMANAGER_H
@@ -10,8 +7,8 @@
 #include "Course.h"
 #include "MyClass.h"
 
-// enums instead of exceptions
-// change to CM_StatusType? typedef?
+
+// enums and not exceptions
 typedef enum CMResult_t{
     CM_SUCCESS,
     CM_ALLOCATION_ERROR,
@@ -21,7 +18,6 @@ typedef enum CMResult_t{
 
 
 class CoursesManager {
-    //should be private!
 private:
     AvlTree<Course,int> _general_courses_tree;
     List general_views_list;
@@ -33,13 +29,7 @@ public:
     CoursesManager(const CoursesManager& courses_manager) = default;
     CoursesManager& operator=(const CoursesManager& courses_manager) = default;
 
-    //getters
-    //AvlTree<Course,int>& getGeneralCourseTree() {return this->general_course_tree;};
-    //List& getGeneralViewsList() {return this->general_views_list;};
-    //any need for getter or setter for total_nunm_of_courses?
-
     //functions needed to be implemented in task
-    // implement the init in library - using the ctor
     /***
     * Adds a course to the system- adds to the general tree of courses
      * connects to the sum "0" tree connected to the node in list of views and classes to the tree under the course
@@ -53,7 +43,6 @@ public:
      * @param courseID - the course ID to remove
     * @return result
     */
-
     CMResult RemoveCourse(int courseID);
     /***
     * Adds time watched
@@ -73,18 +62,13 @@ public:
     */
     CMResult TimeViewed(int courseID, int classID, int *timeViewed);
     /***
-    * return the most viewd classes, if the sum is the same, we return it by the course index
+    * return the most viewed classes, if the sum is the same, we return it by the course index
     * iterates over the watch list from the last node numOfClasses times and returns by order
     * @param  numOfClasses - number of classes to be printed
     * @param classes,courses - the arrays to store the relevant classes and courses
     * @return result
     */
     CMResult GetMostViewedClasses(int numOfClasses, int *courses, int *classes);
-  //  AvlTree<Course,int>* getGeneralCoursesTree();
-    // implement the quit in library - using delete
-
-    List* getGeneralListOfViews();
-    AvlTree<Course,int>* getGeneralTreeOfCourses();
 
 };
 

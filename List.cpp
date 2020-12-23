@@ -15,8 +15,7 @@ List::~List(){
 }
 
 // insert a node after the curr_node given as a parameter
-// need to check if the node exists?
-// check if indeed inside AvlTree in <int,int>
+// no need to check if the node exists - happens outside of func
 ListResult List::insertListNode(ListNode *curr_node,
                                 AvlTree<AvlTree<int, int>, int> &views_courses,
                                 int time_of_views) {
@@ -33,8 +32,7 @@ ListResult List::insertListNode(ListNode *curr_node,
     return LIST_SUCCESS;
 }
 
-// need to check if the node exists?
-// check if indeed inside AvlTree in <int,int>
+// no need to check if the node exists - happens outside of func
 ListResult List::removeListNode(ListNode *node) {
     // we never try to erase the first_node if it's not quit? - deal with it?
     if(node != first_node){
@@ -43,14 +41,12 @@ ListResult List::removeListNode(ListNode *node) {
     else{ // it is the first node
         //ERROR? should happen only in quit
     }
-    // check if works ok - find last node indeed
     if(node != last_node){
         node->getNextNode()->setPrevNode(node->getPrevNode());
     }
     else{ // it is the last node
         last_node = node->getPrevNode();
     }
-
     delete(node);
     return LIST_SUCCESS;
 }

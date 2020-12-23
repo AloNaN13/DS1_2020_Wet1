@@ -3,6 +3,8 @@
 #define DS1_2020_WET1_LIST_H
 
 #include "AvlTree.h"
+
+
 /***
 * !!NOT A GENERIC LIST!!
  * each node represents sum of views
@@ -18,9 +20,8 @@ typedef enum ListResult_t{
 }ListResult;
 
 
-// make generic?
-// List implemented as if the node is created outside of the list - change that?
-// use iterator in List?
+// List implemented as if the node is created outside of the list
+// List is not generic, no use of iterator in List
 
 class ListNode{
 private:
@@ -40,11 +41,7 @@ public:
                                 views_courses(views_courses),
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
-
-    //dtor
     ~ListNode() {delete(&views_courses);};
-
-    //cctor + assign
     //ListNode(const ListNode& node) = default;
     //ListNode& operator=(const ListNode& node) = default;
 
@@ -61,8 +58,8 @@ public:
     */
     AvlTree<AvlTree<int,int>,int>& getViewsCoursesTree() {return this->views_courses;};
     int getTimeOfViews() {return this->time_of_views;};
-
 };
+
 
 class List{
 private:
@@ -72,15 +69,11 @@ public:
         /***
     * List usual functions of ctor , dtor , cctor, managing nodes
     */
-    //ctor
     List(): first_node(new ListNode(0)),
             last_node(nullptr) {
-        last_node = first_node;
+            last_node = first_node;
     }
-
-    //dtor - implemented in cpp
     ~List();
-
     static void deleteListsNodes(ListNode* node);
 
     //cctor + assign
@@ -90,12 +83,11 @@ public:
     // getters
     ListNode* getListsFirstNode() {return this->first_node;};
     ListNode* getListsLastNode() {return this->last_node;};
-    // any need for setters?
+    // no need for setters
 
     // other functions
     ListResult insertListNode(ListNode* curr_node, AvlTree<AvlTree<int,int>,int>& views_courses, int time_of_views);
     ListResult removeListNode(ListNode* node);
-
 };
 
 
