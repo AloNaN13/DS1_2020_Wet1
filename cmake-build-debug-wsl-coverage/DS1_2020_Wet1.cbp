@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DS1_2020_Wet1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DS1_2020_Wet1">
+				<Option output="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/DS1_2020_Wet1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 DS1_2020_Wet1"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DS1_2020_Wet1/fast">
+				<Option output="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/DS1_2020_Wet1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/."/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 DS1_2020_Wet1/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AVL_tests_OLD.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree_OLD.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Views.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Views.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/library.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/library.h">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/main1.cpp">
+			<Option target="DS1_2020_Wet1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

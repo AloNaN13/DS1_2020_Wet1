@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< Updated upstream
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/AvlTree.h
+=======
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+>>>>>>> Stashed changes
 cmath
 -
 iostream
@@ -14,6 +18,7 @@ iostream
 assert.h
 -
 
+<<<<<<< Updated upstream
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/Course.h
 iostream
 -
@@ -45,4 +50,55 @@ iostream
 -
 List.h
 /cygdrive/c/CS_Technion/234218-Data_Structures_1/Winter2021/DS1_2020_Wet1/List.h
+=======
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h
+iostream
+-
+MyClass.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+List.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.cpp
+CoursesManager.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.h
+Course.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h
+Views.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Views.h
+MyClass.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+AvlTree.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+List.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.h
+AvlTree.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+List.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+Course.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h
+MyClass.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+AvlTree.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+iostream
+-
+List.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Views.h
+AvlTree.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+MyClass.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+CoursesManager.h
+C:/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/CoursesManager.h
+>>>>>>> Stashed changes
 

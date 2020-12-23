@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+cmath
+-
+iostream
+-
+assert.h
+-
+
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.cpp
+MyClass.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+string.h
+-
+iostream
+-
+Course.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h
+List.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/Course.h
+iostream
+-
+MyClass.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+List.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+AvlTree.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/AvlTree.h
+
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/MyClass.h
+iostream
+-
+List.h
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/List.h
+

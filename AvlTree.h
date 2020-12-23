@@ -2,6 +2,7 @@
 #ifndef DS1_WET1_AVLTREE_H
 #define DS1_WET1_AVLTREE_H
 
+
 #include <cmath>
 #include <iostream>
 
@@ -26,13 +27,24 @@ private:
         Node* parent;
         int hl;
         int hr;
-
+/**
+ * constractor of the node
+ * @param data
+ * @param key
+ */
         Node(const Element& data,const Key& key):data(*(new Element(data))),key(*(new Key(key))),right_son(nullptr)
                 ,left_son(nullptr),parent(nullptr),hl(0),hr(0){};
+/**
+ * destructor of the node
+ */
         ~Node(){
             delete &data;
             delete &key;
         };
+        /**
+         * assert operator
+         * @return asserted node
+         */
         Node& operator=(const Node&)= default;
         int getHeight(){
             if(hl>hr){
@@ -40,9 +52,21 @@ private:
             }
             return 1+hr;
         };
+        /**
+         * gets the balance factor of the tree
+         * @return the relevant int
+         */
         int getBalanceFactor();
-
+/**
+ * get a nodes parent
+ * @return the parent node
+ */
         Node* getParent(){ return parent;};
+        /**
+         *
+         * @param key
+         * @return
+         */
         Node& getNodeFromKey(const Key key);
         Node* FindNext();
     };
@@ -164,6 +188,14 @@ AvlTree<Element,Key>::AvlTree(const AvlTree& other):root(nullptr),iterator(nullp
     //root=new Node(other_root->data,other_root->key);
 }
 
+/**
+ * function for copying nodes to a tree
+ * @tparam Element
+ * @tparam Key
+ * @param current
+ * @param Node_to_copy
+ * @return
+ */
 template <class Element,class Key>
 typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* current,const Node *Node_to_copy) {
     if(!Node_to_copy){
@@ -182,6 +214,8 @@ typename AvlTree<Element,Key>::Node* AvlTree<Element,Key>::copyNodes(Node* curre
     current->hl=Node_to_copy->hl;
     return current;
 }
+
+
 
 template <class Element,class Key>
 AvlTree<Element,Key>::AvlTree(Element *arrElement, Key *arrKey, int num):root(nullptr)

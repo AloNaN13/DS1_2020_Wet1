@@ -1,0 +1,3 @@
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/CMakeFiles/DS1_2020_Wet1.dir
+/mnt/c/Users/svet/Downloads/Documents/Projects/mivney/DS1_2020_Wet1/cmake-build-debug-wsl-coverage/CMakeFiles/edit_cache.dir
