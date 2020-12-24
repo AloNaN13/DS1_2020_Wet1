@@ -9,7 +9,6 @@ include_directories(.)
 add_executable(DS1_2020_Wet1
         AVL_tests_OLD.h
         AvlTree.h
-        AvlTree_OLD.h
         Course.cpp
         Course.h
         CoursesManager.cpp

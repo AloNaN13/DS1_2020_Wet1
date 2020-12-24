@@ -100,9 +100,6 @@ CMResult CoursesManager::RemoveCourse(int courseID) {
 
 CMResult CoursesManager::WatchClass(int courseID, int classID, int time){
     try{
-        if(_general_courses_tree.getElementptr(courseID) == nullptr){
-            return CM_FAILURE;
-        }
         if(courseID <= 0 || classID < 0 || time <= 0){
             return CM_INVALID_INPUT;
         }

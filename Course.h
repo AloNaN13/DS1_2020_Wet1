@@ -2,8 +2,8 @@
 /****************************************************************************/
 /*                                                                          */
 /* STRUCT FOR THE COURSE OBJECT                                             */
-/* @var _id, _classes_array, _tot_views, _num_of_classes :                  */
-/* the course ID, classes array, total course views, number of classes      */
+/* @var _id, _classes_array, _num_of_classes :                  */
+/* the course ID, classes array, number of classes      */
 /* using getters and setters                                                */
 /*                                                                          */
 /****************************************************************************/
@@ -37,7 +37,7 @@ public:
      */
     Course(const Course &course);
     /**
-     * assert operator
+     * assignment operator
      * @param course
      * @return node with new value
      */

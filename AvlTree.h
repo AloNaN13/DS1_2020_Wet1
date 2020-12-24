@@ -49,8 +49,8 @@ private:
             delete &key;
         };
         /**
-         * assert operator
-         * @return asserted node
+         * assignment operator
+         * @return assigned node
          */
         Node& operator=(const Node&)= default;
         int getHeight(){

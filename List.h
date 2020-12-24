@@ -41,7 +41,7 @@ public:
                                 prev_node(nullptr),
                                 next_node(nullptr) {};
     /**
-     * constructor of node with tree to be asserted under
+     * constructor of node with tree to be assigned under
      * @param time_of_views
      * @param views_courses
      */
